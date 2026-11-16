@@ -153,21 +153,24 @@ h1{font-family:var(--title);font-weight:500;font-size:clamp(34px,4.4vw,60px);lin
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
 @keyframes push{from{transform:scale(1)}to{transform:scale(1.07)}}
 
-/* Sc. 1 — la mattina: i campi della v1, animati a livelli */
-.s1 .scape{position:absolute;inset:0;transform-origin:52% 70%}
-.play.s1 .scape{animation:push 9s linear .2s both}
+/* Sc. 1 — la mattina: volo di drone sui campi (illustrazione a livelli: cielo lontano, terra vicina) */
+.s1 .cam,.s1 .scape{position:absolute;inset:0}
+.s1 .scape{transform-origin:53% 46%;transform:scale(1.12)}
+.play.s1 .cam{animation:hover 2.8s ease-in-out .3s infinite alternate}
+.play.s1 .scape{animation:drone 6.5s cubic-bezier(.3,.05,.55,1) 0s both}
+@keyframes drone{from{transform:scale(1.12) translate(3.4cqw,2cqw) rotate(-1.4deg)}to{transform:scale(1.62) translate(5cqw,-1.4cqw) rotate(.8deg)}}
+@keyframes hover{from{transform:translate(0,0) rotate(0)}to{transform:translate(-.3cqw,-.5cqw) rotate(.25deg)}}
 .s1 .scape img,.s1 .sky{position:absolute;left:0;top:0;width:100%;height:auto}
-.s1 .sky{aspect-ratio:1440/806}
+.s1 .sky{aspect-ratio:1440/806;transform-origin:53% 38%}
 .s1 .sky img{position:absolute;inset:0}
 .s1 .sky .sun{position:absolute;left:53.3%;top:34%;width:7.4cqw;aspect-ratio:1;margin:-3.7cqw;border-radius:50%;background:var(--pa-arancio);opacity:.92}
-.play.s1 .sky{animation:sunrise 3.6s var(--ease) .2s both}
-.play.s1 .sky .sun{animation:glow 2.8s ease-in-out 3.8s infinite alternate}
-@keyframes sunrise{from{transform:translateY(13cqw);opacity:.2}to{transform:none;opacity:1}}
-@keyframes glow{from{transform:scale(1)}to{transform:scale(1.08)}}
+/* il cielo è lontano: mentre la terra si avvicina, il cielo quasi non cresce (parallasse) e il sole sale */
+.play.s1 .sky{animation:sunrise 6.5s cubic-bezier(.3,.05,.55,1) 0s both}
+@keyframes sunrise{from{transform:translateY(9cqw) scale(1)}to{transform:translateY(0) scale(.74)}}
 .s1 .veil{position:absolute;left:0;top:0;width:60cqw;height:34cqw;background:radial-gradient(ellipse 100% 100% at 0 0,var(--pa-sabbia) 62%,rgba(255,247,241,0) 100%);z-index:1}
 .s1 .tblock{position:absolute;left:6cqw;top:4.6cqw;width:44cqw;z-index:2;display:flex;flex-direction:column;gap:1.2cqw}
 .s1 .q{color:var(--pa-arancio)}
-/* i passi di mamma e papà lungo la strada, dal primo piano verso l'orizzonte */
+/* i passi di mamma e papà lungo la strada: il drone li segue */
 .s1 .road{position:absolute;inset:0;z-index:1}
 .s1 .road i{position:absolute;border-radius:50%;background:var(--pa-arancio);box-shadow:0 0 0 .22cqw var(--pa-sabbia)}
 .play.s1 .road i{animation:pop .5s var(--pop) var(--d) both,march 2.4s ease-in-out calc(var(--d) + .5s) infinite}
@@ -208,7 +211,17 @@ h1{font-family:var(--title);font-weight:500;font-size:clamp(34px,4.4vw,60px);lin
 .static.s3 .note{opacity:1}
 
 /* Sc. 4 — cooperativa = insieme */
-.s4 .illu{position:absolute;right:-2cqw;bottom:0;width:58cqw;height:auto}
+.s4 .illu{position:absolute;right:-2cqw;bottom:0;width:58cqw;aspect-ratio:1800/1008}
+.s4 .illu img{position:absolute;inset:0;width:100%;height:100%}
+/* le persone: chi annuisce, chi indica il foglio, il respiro */
+.s4 .p{transform-origin:var(--o)}
+.play.s4 .p{animation:var(--k) var(--t) ease-in-out var(--l,0s) infinite alternate}
+@keyframes lean{from{transform:rotate(-1.2deg)}to{transform:rotate(1.6deg)}}
+@keyframes nod{0%{transform:rotate(-4deg)}40%{transform:rotate(6deg)}100%{transform:rotate(2deg)}}
+@keyframes look{0%{transform:rotate(-2deg)}50%{transform:rotate(6deg)}100%{transform:rotate(2deg) translateX(.3cqw)}}
+@keyframes breath{from{transform:scale(1,1)}to{transform:scale(1.012,1.022)}}
+@keyframes tap{0%,60%{transform:translate(0,0) rotate(0)}80%{transform:translate(-.4cqw,.6cqw) rotate(-2.4deg)}100%{transform:translate(0,.1cqw) rotate(-.4deg)}}
+.static .s4 .p,.static.s4 .p{animation:none}
 .s4 .tblock{position:absolute;left:7cqw;top:8cqw;width:40cqw;display:flex;flex-direction:column;gap:1.6cqw}
 .s4 .word{font-family:var(--title);font-weight:500;font-size:6.4cqw;line-height:1}
 .s4 .word b{font-weight:500;color:var(--pa-arancio)}
@@ -343,11 +356,11 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
       <article class="beat">
         <div class="frame s1 sabbia" tabindex="0" role="button" aria-label="Scena 1, rivedi animazione">
           <div class="stage">
-            <div class="scape">
+            <div class="cam"><div class="scape">
               <div class="sky"><i class="sun"></i><img src="assets/img/campi-cielo.png" alt="" aria-hidden="true"></div>
-              <img class="ani e-draw" style="--d:0s;--w:2.6s" src="assets/img/campi-terra.png" alt="Illustrazione: colline e campi all'alba">
+              <img src="assets/img/campi-terra.png" alt="Illustrazione: colline e campi all'alba">
               <div class="road" id="road" aria-hidden="true"></div>
-            </div>
+            </div></div>
             <div class="veil" aria-hidden="true"></div>
             <div class="tblock">
               <p class="hl a-up" style="--d:.5s">Ogni mattina mamma o papà escono per andare al lavoro.</p>
@@ -357,11 +370,11 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
           <span class="tc">Sc. 1 · 0:00 – 0:05</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 01 · La domanda <span class="chip f">Illustrazione animata</span></p>
+          <p class="idx">Scena 01 · La domanda <span class="chip f">Volo di drone animato</span></p>
           <dl>
             <div><dt>A schermo</dt><dd>«Ogni mattina mamma o papà escono per andare al lavoro.» · «Ma dove vanno?»</dd></div>
             <div><dt>Voce</dt><dd class="vo">Ogni mattina mamma o papà escono di casa per andare al lavoro. Ma dove vanno?</dd></div>
-            <div><dt>Regia</dt><dd>Fondo sabbia e l'illustrazione «campi» del DS in campagna, divisa in due livelli. Le colline si disegnano da sinistra a destra; dietro, il cielo con i raggi sale insieme al sole, un cerchio arancio pieno (la geometria semplice sopra il tratto, come vuole il brandbook). Lungo la strada compaiono dei puntini arancio, i passi di mamma e papà che partono, dal primo piano verso l'orizzonte. Tutta la scena si avvicina piano. La domanda entra per ultima, più grande e in arancio.</dd></div>
+            <div><dt>Regia</dt><dd>Una ripresa da drone, ma disegnata: l'illustrazione «campi» del DS in campagna, divisa in livelli. La camera vola in avanti sulle colline, leggermente inclinata, con il piccolo ondeggiare di un drone in aria; il cielo è lontano e cresce meno della terra, così si sente la profondità. Intanto sorge il sole, un cerchio arancio pieno sopra il tratto. Lungo la strada compaiono dei puntini arancio, i passi di mamma e papà che partono: il drone li segue verso l'orizzonte. La domanda entra per ultima, più grande e in arancio. Nel montaggio finale il volo si può rifare in After Effects con gli stessi livelli (cielo, terra, sole).</dd></div>
           </dl>
         </div>
       </article>
@@ -418,7 +431,14 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
       <article class="beat">
         <div class="frame s4 sabbia" tabindex="0" role="button" aria-label="Scena 4, rivedi animazione">
           <div class="stage">
-            <img class="illu ani e-draw" style="--d:.1s;--w:2.6s" src="assets/img/cooperazione-campagna.png" alt="" aria-hidden="true">
+            <div class="illu ani e-draw" style="--d:.1s;--w:2.6s" aria-hidden="true">
+              <img src="assets/img/coop-sfondo.png" alt="">
+              <img class="p" style="--o:62.8% 100%;--k:breath;--t:3.4s" src="assets/img/coop-anziano.png" alt="">
+              <img class="p" style="--o:63.3% 47.6%;--k:look;--t:2.2s;--l:.6s" src="assets/img/coop-anziano-testa.png" alt="">
+              <img class="p" style="--o:69.4% 69.4%;--k:tap;--t:1.3s;--l:1s" src="assets/img/coop-foglio.png" alt="">
+              <img class="p" style="--o:38.9% 100%;--k:lean;--t:3.8s" src="assets/img/coop-giovane.png" alt="">
+              <img class="p" style="--o:49.4% 35.7%;--k:nod;--t:1.7s;--l:.3s" src="assets/img/coop-giovane-testa.png" alt="">
+            </div>
             <div class="tblock">
               <p class="word a-up" style="--d:.4s">Co<b>·</b>operare</p>
               <p class="hl a-up" style="--d:1.4s">vuol dire lavorare insieme.</p>
@@ -432,7 +452,7 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
           <dl>
             <div><dt>A schermo</dt><dd>«Co·operare» · «vuol dire lavorare insieme.»</dd></div>
             <div><dt>Voce</dt><dd class="vo">Cooperativa vuol dire proprio questo: lavorare insieme e aiutarsi a vicenda.</dd></div>
-            <div><dt>Regia</dt><dd>La parola viene spezzata per farla capire: «co» (insieme) e «operare» (lavorare). A destra l'illustrazione «cooperazione» del DS, con due agricoltori che guardano insieme lo stesso foglio. In basso tanti semini arrivano da direzioni diverse e si mettono in fila: da soli erano sparsi, insieme fanno una forma.</dd></div>
+            <div><dt>Regia</dt><dd>La parola viene spezzata per farla capire: «co» (insieme) e «operare» (lavorare). A destra l'illustrazione «cooperazione» del DS, scomposta in livelli perché le persone si muovano: il ragazzo annuisce e si sporge, l'agricoltore più anziano abbassa lo sguardo e batte il dito sul foglio che tengono insieme, entrambi respirano. In basso tanti semini arrivano da direzioni diverse e si mettono in fila: da soli erano sparsi, insieme fanno una forma.</dd></div>
           </dl>
         </div>
       </article>
@@ -446,7 +466,6 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
             <div class="side">
               <p class="lab a-up" style="--d:5.2s">Sono le persone di</p>
               <img class="logo a-up" style="--d:5.5s" src="assets/loghi/primoverde.svg" alt="Primoverde">
-              <img class="end a-up" style="--d:5.8s" src="assets/loghi/produttori-arborea.svg" alt="Produttori Arborea">
             </div>
             <div class="zone" aria-hidden="true">
               <i class="ground"></i>
@@ -460,7 +479,7 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
         <div class="info">
           <p class="idx">Scena 05 · Chi coltiva · Primoverde <span class="chip">Riprese</span> <span class="chip f">Illustrazioni animate</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«C'è chi semina, raccoglie e prepara frutta e verdura.» · «Sono le persone di» + marchio Primoverde con endorser 1:5</dd></div>
+            <div><dt>A schermo</dt><dd>«C'è chi semina, raccoglie e prepara frutta e verdura.» · «Sono le persone di» + marchio Primoverde</dd></div>
             <div><dt>Voce</dt><dd class="vo">C'è chi semina e raccoglie patate, carote e angurie, e chi le prepara per la tua tavola. Sono le persone di Primoverde.</dd></div>
             <div><dt>Regia</dt><dd>Tutta la scena è verde foglia, il colore di Primoverde. Le riprese stanno in una finestra grande a sinistra: prima le mani nella terra, poi le persone sulla linea delle carote e delle patate. A destra, su una linea di terra, le illustrazioni seguono la voce: la carota spunta e ondeggia, l'anguria arriva rotolando, le patate cadono e rimbalzano. Il marchio Primoverde, nel suo verde campagna, arriva grande quando la voce lo nomina.</dd></div>
             <div><dt>Girato</dt><dd>Spot Novelle 0:07–0:10 · 70 anni 1:30–1:33 · Cooperativa 4k 0:54–0:56 · Fonni 2:15–2:17</dd></div>
@@ -478,7 +497,6 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
             <div class="side">
               <p class="lab a-up" style="--d:5s">Sono le persone di</p>
               <img class="logo a-up" style="--d:5.3s;width:20cqw" src="assets/loghi/rossopregio-bianco.png" alt="Rossopregio">
-              <img class="end a-up" style="--d:5.6s;width:4cqw" src="assets/loghi/produttori-arborea-bianco.png" alt="Produttori Arborea">
             </div>
             <div class="zone" aria-hidden="true">
               <i class="ground"></i>
@@ -490,7 +508,7 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
         <div class="info">
           <p class="idx">Scena 06 · Chi alleva · Rossopregio <span class="chip">Riprese</span> <span class="chip f">Illustrazioni animate</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«C'è chi si prende cura degli animali, ogni giorno.» · «Sono le persone di» + marchio Rossopregio con endorser 1:5</dd></div>
+            <div><dt>A schermo</dt><dd>«C'è chi si prende cura degli animali, ogni giorno.» · «Sono le persone di» + marchio Rossopregio</dd></div>
             <div><dt>Voce</dt><dd class="vo">C'è chi si prende cura dei bovini ogni giorno, perché crescano sani e tranquilli. Sono le persone di Rossopregio.</dd></div>
             <div><dt>Regia</dt><dd>Tutta la scena è color carne, il colore di Rossopregio, con testi e marchio in bianco. Nella finestra: dal drone sul centro di allevamento si scende in stalla, fino ai musi dei vitelli. La ripresa verticale di «Generico» si appoggia sopra come una foto. A destra il bovino illustrato entra camminando a piccoli passi, si ferma e respira.</dd></div>
             <div><dt>Girato</dt><dd>Cooperativa 4k 0:16–0:19 · Fonni 3:41–3:46 · verticale: Generico 0:42–0:48</dd></div>
@@ -508,7 +526,6 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
             <div class="side">
               <p class="lab a-up" style="--d:6s">Sono le persone di</p>
               <img class="logo a-up" style="--d:6.3s" src="assets/loghi/meridoro-campagna.png" alt="Meridoro">
-              <img class="end a-up" style="--d:6.6s" src="assets/loghi/produttori-arborea.svg" alt="Produttori Arborea">
             </div>
             <div class="zone" aria-hidden="true">
               <i class="ground"></i>
@@ -525,7 +542,7 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
         <div class="info">
           <p class="idx">Scena 07 · Chi prepara il cibo per gli animali · Meridoro <span class="chip">Riprese</span> <span class="chip f">Illustrazioni animate</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«C'è chi prepara il cibo per gli animali e chi lo porta in tutta l'isola.» · «Sono le persone di» + marchio Meridoro con endorser 1:5</dd></div>
+            <div><dt>A schermo</dt><dd>«C'è chi prepara il cibo per gli animali e chi lo porta in tutta l'isola.» · «Sono le persone di» + marchio Meridoro</dd></div>
             <div><dt>Voce</dt><dd class="vo">E c'è chi prepara il cibo per gli animali e chi lo porta con il camion in tutta l'isola. Sono le persone di Meridoro.</dd></div>
             <div><dt>Regia</dt><dd>Tutta la scena è oro, il colore di Meridoro, con testi e marchio in verde campagna. Nella finestra: l'operatrice alla linea del mangimificio, il mais raccolto nei campi, il carro miscelatore. Sopra, in verticale, il ragazzo che prepara le balle Fiberfeed e poi il camion Meridoro. A destra spiga e mais crescono dalla terra e ondeggiano; ne cadono dei semini, il cibo degli animali.</dd></div>
             <div><dt>Girato</dt><dd>70 anni 2:10–2:13 · Fonni 2:45–2:49 e 2:56–3:00 · verticali: Generico 0:14–0:18, Camion 0:05–0:09</dd></div>
