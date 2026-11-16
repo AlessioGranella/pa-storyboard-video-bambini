@@ -153,16 +153,27 @@ h1{font-family:var(--title);font-weight:500;font-size:clamp(34px,4.4vw,60px);lin
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
 @keyframes push{from{transform:scale(1)}to{transform:scale(1.07)}}
 
-/* Sc. 1 — la domanda */
-.s1 .tblock{position:absolute;left:8cqw;right:8cqw;top:6cqw;z-index:2;text-align:center;display:flex;flex-direction:column;gap:.6cqw}
-.s1 .tblock .hl.xl{font-size:6.2cqw;line-height:1.08}
-.s1 .tblock .q{color:var(--pa-arancio)}
-.s1 .sun{position:absolute;left:71cqw;top:5cqw;width:10cqw;aspect-ratio:1;border-radius:50%;background:var(--pa-arancio);opacity:.95}
-.play.s1 .sun{animation:sunrise 3.5s var(--ease) .1s both}
-@keyframes sunrise{from{transform:translateY(16cqw) scale(.6);opacity:0}to{transform:none;opacity:.95}}
-.s1 .trail{position:absolute;inset:0}
-.s1 .trail i{position:absolute;width:1cqw;height:1cqw;margin:-.5cqw;border-radius:50%;background:var(--pa-campagna)}
-/* i tre mondi: cerchio pieno del colore del marchio + illustrazione che si muove */
+/* Sc. 1 — la mattina: i campi della v1, animati a livelli */
+.s1 .scape{position:absolute;inset:0;transform-origin:52% 70%}
+.play.s1 .scape{animation:push 9s linear .2s both}
+.s1 .scape img,.s1 .sky{position:absolute;left:0;top:0;width:100%;height:auto}
+.s1 .sky{aspect-ratio:1440/806}
+.s1 .sky img{position:absolute;inset:0}
+.s1 .sky .sun{position:absolute;left:53.3%;top:34%;width:7.4cqw;aspect-ratio:1;margin:-3.7cqw;border-radius:50%;background:var(--pa-arancio);opacity:.92}
+.play.s1 .sky{animation:sunrise 3.6s var(--ease) .2s both}
+.play.s1 .sky .sun{animation:glow 2.8s ease-in-out 3.8s infinite alternate}
+@keyframes sunrise{from{transform:translateY(13cqw);opacity:.2}to{transform:none;opacity:1}}
+@keyframes glow{from{transform:scale(1)}to{transform:scale(1.08)}}
+.s1 .veil{position:absolute;left:0;top:0;width:60cqw;height:34cqw;background:radial-gradient(ellipse 100% 100% at 0 0,var(--pa-sabbia) 62%,rgba(255,247,241,0) 100%);z-index:1}
+.s1 .tblock{position:absolute;left:6cqw;top:4.6cqw;width:44cqw;z-index:2;display:flex;flex-direction:column;gap:1.2cqw}
+.s1 .q{color:var(--pa-arancio)}
+/* i passi di mamma e papà lungo la strada, dal primo piano verso l'orizzonte */
+.s1 .road{position:absolute;inset:0;z-index:1}
+.s1 .road i{position:absolute;border-radius:50%;background:var(--pa-arancio);box-shadow:0 0 0 .22cqw var(--pa-sabbia)}
+.play.s1 .road i{animation:pop .5s var(--pop) var(--d) both,march 2.4s ease-in-out calc(var(--d) + .5s) infinite}
+@keyframes march{0%,100%{opacity:1}50%{opacity:.35}}
+.static.s1 .road i{opacity:1}
+
 .world-dot{position:absolute;border-radius:50%;aspect-ratio:1;overflow:hidden}
 .world-dot img{position:absolute;display:block}
 .world-dot.pv{background:var(--pa-foglia)} .world-dot.rp{background:var(--pa-carne)} .world-dot.md{background:var(--pa-oro)}
@@ -332,29 +343,25 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
       <article class="beat">
         <div class="frame s1 sabbia" tabindex="0" role="button" aria-label="Scena 1, rivedi animazione">
           <div class="stage">
-            <div class="trail" id="trail" aria-hidden="true"></div>
+            <div class="scape">
+              <div class="sky"><i class="sun"></i><img src="assets/img/campi-cielo.png" alt="" aria-hidden="true"></div>
+              <img class="ani e-draw" style="--d:0s;--w:2.6s" src="assets/img/campi-terra.png" alt="Illustrazione: colline e campi all'alba">
+              <div class="road" id="road" aria-hidden="true"></div>
+            </div>
+            <div class="veil" aria-hidden="true"></div>
             <div class="tblock">
-              <p class="hl xl a-up" style="--d:.3s">Dove vanno mamma e papà</p>
-              <p class="hl xl q a-up" style="--d:.9s">ogni mattina?</p>
-            </div>
-            <div class="world-dot pv ani e-pop" style="--d:1.6s;left:9cqw;top:27cqw;width:17cqw">
-              <img class="ani e-rise" style="--d:2s;left:31%;bottom:-8%;width:38%" src="assets/img/carota-campagna.png" alt="Carota">
-            </div>
-            <div class="world-dot rp ani e-pop" style="--d:2.3s;left:41.5cqw;top:31cqw;width:17cqw">
-              <img class="ani e-walk" style="--d:2.6s;--w:2.2s;--x:14cqw;left:10%;top:28%;width:80%" src="assets/img/bovino-sabbia.png" alt="Bovino">
-            </div>
-            <div class="world-dot md ani e-pop" style="--d:3s;left:74cqw;top:27cqw;width:17cqw">
-              <img class="ani e-grow" style="--d:3.3s;left:32%;bottom:4%;width:36%" src="assets/img/spiga-di-grano-campagna.png" alt="Spiga">
+              <p class="hl a-up" style="--d:.5s">Ogni mattina mamma o papà escono per andare al lavoro.</p>
+              <p class="hl xl q a-in" style="--d:2.6s">Ma dove vanno?</p>
             </div>
           </div>
           <span class="tc">Sc. 1 · 0:00 – 0:05</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 01 · La domanda <span class="chip f">Illustrazioni animate</span></p>
+          <p class="idx">Scena 01 · La domanda <span class="chip f">Illustrazione animata</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«Dove vanno mamma e papà ogni mattina?»</dd></div>
+            <div><dt>A schermo</dt><dd>«Ogni mattina mamma o papà escono per andare al lavoro.» · «Ma dove vanno?»</dd></div>
             <div><dt>Voce</dt><dd class="vo">Ogni mattina mamma o papà escono di casa per andare al lavoro. Ma dove vanno?</dd></div>
-            <div><dt>Regia</dt><dd>Fondo sabbia, la domanda grande al centro. Una scia di puntini, come le orme di chi parte, attraversa il frame e tocca tre cerchi, uno per mondo e ognuno nel colore del suo marchio: foglia con la carota che spunta dalla terra, carne con il bovino che entra camminando, oro con la spiga che cresce. Sono le tre «porte» che il video aprirà, e i colori tornano uguali nelle scene 5, 6 e 7.</dd></div>
+            <div><dt>Regia</dt><dd>Fondo sabbia e l'illustrazione «campi» del DS in campagna, divisa in due livelli. Le colline si disegnano da sinistra a destra; dietro, il cielo con i raggi sale insieme al sole, un cerchio arancio pieno (la geometria semplice sopra il tratto, come vuole il brandbook). Lungo la strada compaiono dei puntini arancio, i passi di mamma e papà che partono, dal primo piano verso l'orizzonte. Tutta la scena si avvicina piano. La domanda entra per ultima, più grande e in arancio.</dd></div>
           </dl>
         </div>
       </article>
@@ -651,14 +658,15 @@ map.insertAdjacentHTML('beforeend',
   `<i class="ring" style="left:${ARBOREA[0]}%;top:${ARBOREA[1]}%;--d:1.4s"></i>
    <i class="pin home a-in" style="left:${ARBOREA[0]}%;top:${ARBOREA[1]}%;--d:1s"><span>Arborea</span></i>`);
 
-// Sc. 1: scia di puntini che attraversa il frame e tocca i tre cerchi
-const trail = document.getElementById('trail');
-for (let i = 0; i <= 46; i++) {
-  const t = i / 46, x = 2 + t * 96, y = 47 + Math.sin(t * Math.PI * 3.1 + .4) * 4.5;
-  const d = document.createElement('i'); d.className = 'ani e-pop';
-  d.style.left = x + 'cqw'; d.style.top = y + 'cqw'; d.style.setProperty('--d', (1.2 + t * 2.4) + 's');
-  trail.appendChild(d);
-}
+// Sc. 1: i passi lungo la strada (coordinate % sull'illustrazione 16:9, dal primo piano all'orizzonte)
+const ROAD = [[44.2,99.4],[46.8,95],[49.4,90.6],[51.9,87.1],[54,84.3],[55.8,81.5],[57.2,79],[58.6,77.1],[60.5,75.6],[62.6,74.3],[64.8,73],[67,71.9]];
+const road = document.getElementById('road');
+ROAD.forEach(([x,y],i) => {
+  const d = document.createElement('i'), s = 1.25 - i * .07;
+  d.style.cssText = `left:${x}%;top:${y}%;width:${s}cqw;height:${s}cqw;margin:${-s/2}cqw`;
+  d.style.setProperty('--d', (2.3 + i * .16) + 's');
+  road.appendChild(d);
+});
 
 // Sc. 4: semini che arrivano da direzioni diverse e si mettono in fila (2 righe × 8)
 const seeds = document.getElementById('seeds');
