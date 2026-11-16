@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Storyboard video bambini</title>
+
+<style>
+/* ── Font del cliente ─────────────────────────────────────────────────── */
+@font-face{font-family:"Fredoka";src:url("assets/fonts/fredoka-latin.woff2") format("woff2");font-weight:300 700;font-stretch:75% 125%;font-display:swap}
+@font-face{font-family:"Roboto Flex";src:url("assets/fonts/robotoflex-latin.woff2") format("woff2");font-weight:100 1000;font-display:swap}
+
+/* ── Token Produttori Arborea (main palette del brandbook) ────────────── */
+:root{
+  --pa-campagna:#004928; --pa-foglia:#95C11F; --pa-oro:#D7B46A; --pa-carne:#8D1926; --pa-arancio:#F18700;
+  --pa-sabbia:#FFF7F1; --pa-bianco:#FFFFFF; --pa-ferro:#535A60; --pa-notte:#000E1E;
+  --pa-oro-scuro:#A9873F;
+
+  --title:"Fredoka",system-ui,sans-serif;
+  --text:"Roboto Flex",-apple-system,"Helvetica Neue",Arial,sans-serif;
+
+  --pa-space-xs:8px; --pa-space-s:12px; --pa-space-m:16px; --pa-space-l:24px;
+  --pa-space-xl:32px; --pa-space-2xl:48px; --pa-space-3xl:64px;
+  --pa-radius-m:16px; --pa-radius-l:24px; --pa-radius-pill:999px;
+  --pa-radius-seme:50% 50% 50% 0;
+
+  --max:1440px; --pad:40px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --pop:cubic-bezier(.3,1.5,.5,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--pa-sabbia);color:var(--pa-notte);font-family:var(--text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+@media (max-width:720px){:root{--pad:16px}}
+
+/* ── Testata ──────────────────────────────────────────────────────────── */
+.masthead{background:var(--pa-campagna);color:var(--pa-sabbia);padding:var(--pa-space-3xl) 0 56px}
+.masthead .wrap{display:flex;flex-direction:column;gap:var(--pa-space-l)}
+.eyebrow{display:inline-block;width:fit-content;font-size:13px;font-weight:500;line-height:1.4;text-transform:uppercase;letter-spacing:.08em;padding:4px var(--pa-space-s);border-radius:var(--pa-radius-pill);background:rgba(255,255,255,.14);color:var(--pa-sabbia)}
+h1{font-family:var(--title);font-weight:500;font-size:clamp(34px,4.4vw,60px);line-height:1.1;max-width:20ch}
+.masthead p.sub{font-size:17px;max-width:72ch;opacity:.88}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--pa-space-s);margin-top:var(--pa-space-xs)}
+.meta div{background:rgba(255,247,241,.08);border-radius:var(--pa-radius-m);padding:var(--pa-space-m) 18px}
+.meta dt{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--pa-oro);margin-bottom:6px}
+.meta dd{font-size:15px;line-height:1.35}
+
+/* ── Il racconto in breve ─────────────────────────────────────────────── */
+.idea{padding:var(--pa-space-2xl) 0 0}
+.idea .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--pa-space-m)}
+.idea .card{background:var(--pa-bianco);border-radius:var(--pa-radius-m);padding:var(--pa-space-l)}
+.idea h3{font-family:var(--title);font-weight:500;font-size:19px;color:var(--pa-campagna);margin-bottom:6px}
+.idea p{font-size:15px}
+
+/* ── Barra strumenti ──────────────────────────────────────────────────── */
+.toolbar{background:var(--pa-sabbia);border-bottom:1px solid rgba(0,73,40,.18);position:sticky;top:0;z-index:10;margin-top:var(--pa-space-2xl)}
+.toolbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:var(--pa-space-l);padding-top:14px;padding-bottom:14px}
+.toolbar .label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--pa-ferro)}
+.toggle{display:inline-flex;align-items:center;gap:9px;cursor:pointer;user-select:none;font-size:14px}
+.toggle input{appearance:none;width:18px;height:18px;border:1.5px solid var(--pa-campagna);border-radius:5px;background:var(--pa-bianco);cursor:pointer;display:grid;place-content:center}
+.toggle input:checked{background:var(--pa-campagna)}
+.toggle input:checked::after{content:"";width:8px;height:8px;border-radius:2px;background:var(--pa-oro)}
+.toggle input:focus-visible{outline:2px solid var(--pa-oro);outline-offset:2px}
+.toolbar .hint{font-size:13px;color:var(--pa-ferro);margin-left:auto}
+
+/* ── Griglia scene ────────────────────────────────────────────────────── */
+.board{padding:var(--pa-space-2xl) 0 80px}
+.sec-h{font-family:var(--title);font-weight:500;font-size:28px;color:var(--pa-campagna);margin-bottom:var(--pa-space-xl)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px var(--pa-space-xl)}
+.grid.big{grid-template-columns:1fr}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+.beat{display:flex;flex-direction:column;min-width:0}
+
+/* ── Il frame 16:9 ────────────────────────────────────────────────────── */
+.frame{container-type:inline-size;position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;
+  border-radius:var(--pa-radius-l);background:var(--pa-campagna);color:var(--pa-sabbia)}
+.frame.sabbia{background:var(--pa-sabbia);color:var(--pa-campagna);box-shadow:inset 0 0 0 1px rgba(0,73,40,.15)}
+.frame.notte{background:var(--pa-notte)}
+.stage{position:absolute;inset:0}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* velatura per leggere il testo sul girato */
+.scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,14,30,.72) 0%,rgba(0,14,30,.35) 34%,transparent 58%)}
+.scrim.top{background:linear-gradient(to bottom,rgba(0,14,30,.6) 0%,transparent 40%),linear-gradient(to top,rgba(0,14,30,.7) 0%,transparent 45%)}
+.tc{position:absolute;left:2.4cqw;top:2cqw;z-index:6;font-size:1.25cqw;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--pa-sabbia);background:rgba(0,14,30,.55);padding:.35cqw .8cqw;border-radius:var(--pa-radius-pill)}
+.replay{position:absolute;right:2.4cqw;top:2cqw;z-index:6;font-size:1.1cqw;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--pa-sabbia);background:rgba(0,14,30,.55);padding:.35cqw .8cqw;border-radius:var(--pa-radius-pill);opacity:0;transition:opacity .2s}
+.frame:hover .replay,.frame:focus-visible .replay{opacity:1}
+.frame:focus-visible{outline:3px solid var(--pa-oro);outline-offset:3px}
+
+/* Tipografia nei frame: scala X, X/2, X/4 */
+.hl{font-family:var(--title);font-weight:500;font-size:4.2cqw;line-height:1.15}
+.hl.xl{font-size:5.6cqw}
+.body{font-family:var(--text);font-weight:500;font-size:2cqw;line-height:1.3}
+
+/* Lockup marchio + endorser 5:1 (brandbook 2.3) in basso a destra */
+.mark{position:absolute;right:3.6cqw;bottom:3.4cqw;z-index:4;display:grid;justify-items:center;gap:1cqw;width:15cqw}
+.mark img{display:block;width:100%;height:auto}
+.mark .e{width:20%}
+
+/* «Figurine»: illustrazione al tratto del DS dentro una forma piena (firma brandbook 6.2: icona + illustrazione) */
+.fig{position:absolute;z-index:3;display:grid;place-items:center;border-radius:50%;aspect-ratio:1}
+.fig img{position:absolute;inset:16%;width:68%;height:68%;object-fit:contain}
+.fig.foglia{background:var(--pa-foglia)} .fig.carne{background:var(--pa-carne)} .fig.campagna{background:var(--pa-campagna)}
+
+/* ── Animazioni: partono quando il frame riceve .play ──────────────────── */
+.a-up,.a-fade,.a-in,.a-left,.a-right{opacity:0}
+.play .a-up{animation:up .9s var(--ease) var(--d,0s) both}
+.play .a-fade{animation:fade 1.2s ease var(--d,0s) both}
+.play .a-in{animation:pop .8s var(--pop) var(--d,0s) both}
+.play .a-left{animation:left 1.1s var(--ease) var(--d,0s) both}
+.play .a-right{animation:right 1.1s var(--ease) var(--d,0s) both}
+.static .a-up,.static .a-fade,.static .a-in,.static .a-left,.static .a-right{opacity:1;animation:none}
+@keyframes up{from{opacity:0;transform:translateY(1.6cqw)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.2) rotate(-12deg)}to{opacity:1;transform:none}}
+@keyframes left{from{opacity:0;transform:translateX(5cqw)}to{opacity:1;transform:none}}
+@keyframes right{from{opacity:0;transform:translateX(-5cqw)}to{opacity:1;transform:none}}
+/* figurine che «respirano» dopo l'entrata */
+.play .bob{animation:pop .8s var(--pop) var(--d,0s) both,bob 2.6s ease-in-out calc(var(--d,0s) + .8s) infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-.8cqw) rotate(3deg)}}
+
+/* Sc. 1 — la mattina */
+.s1 .land{position:absolute;left:0;right:0;bottom:-12cqw;width:100%;height:auto}
+.s1 .veil{position:absolute;left:0;right:0;top:0;height:30cqw;background:linear-gradient(to bottom,var(--pa-sabbia) 62%,rgba(255,247,241,0))}
+.s1 .sun{position:absolute;left:66cqw;top:36cqw;width:13cqw;aspect-ratio:1;border-radius:50%;background:var(--pa-arancio);opacity:.9}
+.play.s1 .sun{animation:sunrise 4.5s var(--ease) .1s both}
+.static.s1 .sun{transform:translateY(-15cqw)}
+@keyframes sunrise{from{transform:translateY(0)}to{transform:translateY(-15cqw)}}
+.s1 .tblock{position:absolute;left:7cqw;top:5cqw;width:60cqw;z-index:2;display:flex;flex-direction:column;gap:1.4cqw}
+.s1 .q{color:var(--pa-arancio)}
+
+/* Sc. 2 — la mappa */
+.s2 .map{position:absolute;right:13cqw;top:2.6cqw;height:51cqw;aspect-ratio:662/1100}
+.s2 .map > img{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;width:1.3cqw;height:1.3cqw;margin:-.65cqw 0 0 -.65cqw;border-radius:50%;background:var(--pa-sabbia);box-shadow:0 0 0 .32cqw var(--pa-oro)}
+.pin.home{width:2.6cqw;height:2.6cqw;margin:-1.3cqw 0 0 -1.3cqw;background:var(--pa-arancio);box-shadow:0 0 0 .5cqw var(--pa-sabbia)}
+.pin.home span{position:absolute;right:3.6cqw;top:50%;transform:translateY(-50%);font-family:var(--title);font-weight:500;font-size:2.6cqw;color:var(--pa-sabbia);white-space:nowrap}
+.ring{position:absolute;width:2.6cqw;height:2.6cqw;margin:-1.3cqw 0 0 -1.3cqw;border-radius:50%;border:.3cqw solid var(--pa-arancio);opacity:0}
+.play .ring{animation:ring 1.8s ease-out var(--d,0s) 3}
+@keyframes ring{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(4)}}
+.s2 .tblock{position:absolute;left:7cqw;top:50%;transform:translateY(-50%);width:42cqw;display:flex;flex-direction:column;gap:1.8cqw}
+.s2 .tblock .hl{color:var(--pa-oro)}
+
+/* Sc. 3 — 1955 */
+.s3 .bg{filter:sepia(.35)}
+.s3 .scrim{background:linear-gradient(to top,rgba(0,14,30,.85) 0%,rgba(0,14,30,.5) 38%,transparent 62%),linear-gradient(to right,rgba(0,14,30,.45),transparent 45%)}
+.s3 .year{position:absolute;left:6cqw;bottom:4.5cqw;z-index:3;font-family:var(--title);font-weight:500;font-size:15cqw;line-height:.9;color:var(--pa-sabbia)}
+.s3 .yl{position:absolute;left:6.4cqw;bottom:19.5cqw;z-index:3;font-family:var(--title);font-weight:500;font-size:2.6cqw;color:var(--pa-sabbia)}
+.s3 svg.circle{position:absolute;left:30cqw;top:12cqw;width:46cqw;height:auto;z-index:3;overflow:visible}
+.s3 svg.circle path{fill:none;stroke:var(--pa-foglia);stroke-width:7;stroke-linecap:round;stroke-dasharray:1400;stroke-dashoffset:1400}
+.play.s3 svg.circle path{animation:draw 1.2s var(--ease) 2.2s forwards,out .4s ease 4.6s forwards}
+.static.s3 svg.circle path{stroke-dashoffset:0}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes out{to{opacity:0}}
+.s3 .note{position:absolute;left:58cqw;top:37cqw;z-index:3;font-family:var(--title);font-weight:500;font-size:2.8cqw;color:var(--pa-sabbia);
+  background:var(--pa-campagna);padding:.6cqw 1.6cqw;border-radius:var(--pa-radius-seme);opacity:0}
+.play.s3 .note{animation:pop .7s var(--pop) 2.9s both,out .4s ease 4.6s forwards}
+.static.s3 .note{opacity:1}
+
+/* Sc. 4 — cooperativa = insieme */
+.s4 .illu{position:absolute;right:-2cqw;bottom:0;width:58cqw;height:auto}
+.s4 .tblock{position:absolute;left:7cqw;top:8cqw;width:40cqw;display:flex;flex-direction:column;gap:1.6cqw}
+.s4 .word{font-family:var(--title);font-weight:500;font-size:6.4cqw;line-height:1}
+.s4 .word b{font-weight:500;color:var(--pa-arancio)}
+.s4 .seeds{position:absolute;left:7cqw;bottom:7cqw;width:30cqw;height:13cqw}
+.seed{position:absolute;width:2.4cqw;height:2.4cqw;border-radius:var(--pa-radius-seme);background:var(--pa-campagna)}
+.play .seed{animation:gather 1.4s var(--ease) var(--d,0s) both}
+@keyframes gather{from{opacity:0;transform:translate(var(--fx),var(--fy)) rotate(90deg)}to{opacity:1;transform:none}}
+
+/* Sc. 5–7 — i mondi della cooperativa */
+.world .tblock{position:absolute;left:5.5cqw;bottom:5cqw;width:56cqw;z-index:3;display:flex;flex-direction:column;gap:1.2cqw}
+.world .who{font-family:var(--title);font-weight:500;font-size:2.6cqw}
+.s5 .who{color:var(--pa-foglia)} .s6 .who{color:var(--pa-sabbia)} .s7 .who{color:var(--pa-oro)}
+.vcard{position:absolute;z-index:3;top:5cqw;width:19cqw;aspect-ratio:9/16;border-radius:2cqw;overflow:hidden;box-shadow:0 0 0 .6cqw var(--pa-sabbia),0 1.4cqw 3cqw rgba(0,14,30,.35);transform:rotate(3deg)}
+.vcard video{width:100%;height:100%;object-fit:cover;display:block}
+.play .vcard{animation:card 1s var(--ease) var(--d,0s) both}
+.static .vcard{opacity:1}
+@keyframes card{from{opacity:0;transform:translateY(6cqw) rotate(10deg)}to{opacity:1;transform:rotate(3deg)}}
+
+/* Sc. 8 — tante persone */
+.s8 .tblock{position:absolute;left:7cqw;top:7cqw;width:40cqw;display:flex;flex-direction:column;gap:2.4cqw}
+.s8 .num{font-family:var(--title);font-weight:500;font-size:10cqw;line-height:.9}
+.s8 .num small{display:block;font-size:2.4cqw;line-height:1.2;margin-top:.6cqw}
+.s8 .n1{color:var(--pa-campagna)} .s8 .n2{color:var(--pa-oro-scuro)}
+.s8 .dots{position:absolute;right:6cqw;top:8cqw;width:41cqw;display:grid;grid-template-columns:repeat(8,1fr);gap:1.6cqw}
+.s8 .dots i{aspect-ratio:1;border-radius:var(--pa-radius-seme);background:var(--pa-campagna)}
+.s8 .dots i.o{background:var(--pa-oro)}
+.s8 .legend{position:absolute;right:6cqw;bottom:5cqw;width:41cqw;display:flex;align-items:center;gap:1cqw;font-family:var(--text);font-weight:500;font-size:1.8cqw;color:var(--pa-ferro)}
+.s8 .legend i{flex:none;width:2.2cqw;height:2.2cqw;border-radius:var(--pa-radius-seme);background:var(--pa-campagna)}
+
+/* Sc. 9 — insieme */
+.s9 .tblock{position:absolute;left:6cqw;right:6cqw;bottom:5cqw;z-index:3;display:flex;flex-direction:column;gap:1.4cqw}
+.s9 .tblock .hl.b{color:var(--pa-oro)}
+
+/* Sc. 10 — firma */
+.s10 .lock{position:absolute;left:50%;top:41%;transform:translate(-50%,-50%);width:34cqw}
+.s10 .lock img{display:block;width:100%;height:auto}
+.s10 .brands{position:absolute;left:50%;bottom:9cqw;transform:translateX(-50%);display:flex;align-items:center;gap:6cqw}
+.s10 .brands img{display:block;height:5.6cqw;width:auto}
+.s10 .brands img.md{height:3.6cqw}
+.s10 .since{position:absolute;left:50%;top:60%;transform:translateX(-50%);font-family:var(--title);font-weight:500;font-size:2.4cqw;color:var(--pa-oro);white-space:nowrap}
+
+/* ── Schede testo ─────────────────────────────────────────────────────── */
+.info{padding-top:var(--pa-space-l);display:flex;flex-direction:column;gap:var(--pa-space-m)}
+.idx{font-family:var(--title);font-weight:500;font-size:21px;line-height:1.25;color:var(--pa-campagna);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chip{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:var(--pa-radius-pill);background:var(--pa-campagna);color:var(--pa-sabbia)}
+.chip.o{background:var(--pa-oro);color:var(--pa-campagna)}
+.chip.f{background:var(--pa-foglia);color:var(--pa-campagna)}
+.info dl{display:flex;flex-direction:column;gap:var(--pa-space-s);background:var(--pa-bianco);border-radius:var(--pa-radius-m);padding:var(--pa-space-l)}
+.info dl div{display:grid;grid-template-columns:110px 1fr;gap:var(--pa-space-m)}
+@media (max-width:560px){.info dl div{grid-template-columns:1fr;gap:2px}}
+.info dt{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--pa-ferro);padding-top:3px}
+.info dd{font-size:15px;line-height:1.5}
+.info dd.vo{font-style:italic}
+.info dd.note{color:var(--pa-ferro)}
+
+/* ── Sezioni finali ───────────────────────────────────────────────────── */
+.panel{padding:var(--pa-space-2xl) 0;border-top:1px solid rgba(0,73,40,.15)}
+.panel h2{font-family:var(--title);font-weight:500;font-size:28px;color:var(--pa-campagna);margin-bottom:var(--pa-space-l)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--pa-space-m)}
+.card{background:var(--pa-bianco);border-radius:var(--pa-radius-m);padding:var(--pa-space-l);display:flex;flex-direction:column;gap:var(--pa-space-xs)}
+.card h3{font-family:var(--title);font-weight:500;font-size:19px;line-height:1.25;color:var(--pa-campagna)}
+.card p{font-size:15px}
+table{width:100%;border-collapse:collapse;background:var(--pa-bianco);font-size:14px}
+th{background:var(--pa-bianco);color:var(--pa-campagna);text-align:left;font-weight:600;padding:12px 16px;border-bottom:2px solid var(--pa-oro);white-space:nowrap}
+td{padding:10px 16px;border-bottom:1px solid rgba(0,73,40,.1);vertical-align:top}
+.tablewrap{overflow-x:auto;border-radius:var(--pa-radius-m)}
+footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var(--pa-ferro)}
+@media (prefers-reduced-motion:reduce){.play *{animation-duration:.01s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Produttori Arborea · Storyboard · Bozza</p>
+    <h1>La cooperativa raccontata ai bambini</h1>
+    <p class="sub">Un video per i figli dei dipendenti e dei soci. Parte da una domanda semplice («dove vanno mamma e papà la mattina?») e racconta la Cooperativa attraverso le persone: chi la fondò nel 1955, chi coltiva, chi alleva, chi prepara il cibo per gli animali. I marchi compaiono accanto alle persone e ai prodotti. Le riprese vengono dai video della cooperativa, dai tagli indicati nell'elenco frame; illustrazioni e grafica vengono dal design system.</p>
+    <dl class="meta">
+      <div><dt>Pubblicazione</dt><dd>21 novembre 2026</dd></div>
+      <div><dt>Durata</dt><dd>1:13</dd></div>
+      <div><dt>Formato</dt><dd>Orizzontale 16:9</dd></div>
+      <div><dt>Scene</dt><dd>10</dd></div>
+      <div><dt>Pubblico</dt><dd>Bambini e ragazzi</dd></div>
+      <div><dt>Tecnica</dt><dd>Riprese della cooperativa + illustrazioni animate del DS</dd></div>
+      <div><dt>Voce</dt><dd>Narratore caldo, da scegliere</dd></div>
+    </dl>
+  </div>
+</header>
+
+<section class="idea">
+  <div class="wrap">
+    <div class="cols">
+      <div class="card"><h3>Il filo del racconto</h3><p>Una domanda, la risposta e poi la storia. Si comincia dalla mattina di ogni famiglia, si torna al 1955 e si vedono le persone di oggi, mondo per mondo. Il video si chiude sulla squadra intera davanti alla sede.</p></div>
+      <div class="card"><h3>Come aiutiamo a capire</h3><p>Le illustrazioni al tratto del DS diventano «figurine» che spuntano sopra le riprese: carote, patate, angurie, bovini, spighe. I numeri si vedono con i pallini a forma di seme: ogni pallino vale 10 persone. Il cerchio verde sul registro fa vedere che i nomi sono quelli dei primi soci.</p></div>
+      <div class="card"><h3>Il tono</h3><p>Frasi corte e parole che un bambino di 7–8 anni conosce. Si parla al «tu» e non si usano parole come «filiera», «reparto» o «stabilimento». La voce è calda e lenta: un adulto che racconta, non uno spot.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="label">Vista</span>
+    <label class="toggle"><input type="checkbox" id="animToggle" checked> Anima i frame</label>
+    <label class="toggle"><input type="checkbox" id="bigToggle"> Frame grandi</label>
+    <span class="hint">Clic su un frame per rivedere l'animazione</span>
+  </div>
+</div>
+
+<main class="board">
+  <div class="wrap">
+    <h2 class="sec-h">Scena per scena</h2>
+    <div class="grid" id="grid">
+
+      <!-- 1 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s1 sabbia" tabindex="0" role="button" aria-label="Scena 1, rivedi animazione">
+          <div class="stage">
+            <i class="sun" aria-hidden="true"></i>
+            <img class="land" src="assets/img/campi-campagna.png" alt="" aria-hidden="true">
+            <div class="veil" aria-hidden="true"></div>
+            <div class="tblock">
+              <p class="hl a-up" style="--d:.5s">Ogni mattina mamma o papà escono per andare al lavoro.</p>
+              <p class="hl xl q a-in" style="--d:2.6s">Ma dove vanno?</p>
+            </div>
+          </div>
+          <span class="tc">Sc. 1 · 0:00 – 0:05</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 01 · La domanda <span class="chip f">Illustrazione animata</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«Ogni mattina mamma o papà escono per andare al lavoro.» · «Ma dove vanno?»</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Ogni mattina mamma o papà escono di casa per andare al lavoro. Ma dove vanno?</dd></div>
+            <div><dt>Regia</dt><dd>Fondo sabbia, l'illustrazione «campi» del DS in campagna. Il sole è un cerchio arancio pieno che sale da dietro le colline: è la geometria semplice sopra l'illustrazione al tratto, come vuole il brandbook. La domanda entra per ultima, più grande e in arancio.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 2 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s2" tabindex="0" role="button" aria-label="Scena 2, rivedi animazione">
+          <div class="stage">
+            <div class="tblock">
+              <p class="hl a-up" style="--d:.3s">Vanno alla Produttori Arborea.</p>
+              <p class="body a-up" style="--d:1.6s">Una cooperativa nata ad Arborea, che oggi lavora in tutta la Sardegna.</p>
+            </div>
+            <div class="map" id="map">
+              <img class="a-fade" src="assets/img/mappa-sardegna-oro.png" alt="Illustrazione della Sardegna">
+            </div>
+          </div>
+          <span class="tc">Sc. 2 · 0:05 – 0:12</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 02 · La risposta <span class="chip f">Illustrazione animata</span> <span class="chip o">Dati reali</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«Vanno alla Produttori Arborea.» · «Una cooperativa nata ad Arborea, che oggi lavora in tutta la Sardegna.» · sulla mappa: Arborea</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Vanno alla Produttori Arborea, una cooperativa nata qui, ad Arborea, che oggi lavora in tutta la Sardegna.</dd></div>
+            <div><dt>Regia</dt><dd>La mappa illustrata della Sardegna (DS) in oro su campagna. Prima si accende Arborea, con un punto arancio che pulsa come un «sei qui». Poi compaiono uno dopo l'altro i 12 punti vendita Meridoro, nelle stesse posizioni del video punti vendita, per far vedere che la cooperativa arriva in tutta l'isola senza elencare i paesi.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 3 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s3 notte" tabindex="0" role="button" aria-label="Scena 3, rivedi animazione">
+          <div class="stage">
+            <video class="bg clip" src="assets/clips/sc03-archivio.mp4" poster="assets/clips/sc03-archivio.jpg" muted playsinline preload="auto" aria-label="Foto d'archivio: contadine nel grano, il registro dei soci, un bambino"></video>
+            <div class="scrim"></div>
+            <svg class="circle" viewBox="0 0 460 300" aria-hidden="true"><path d="M60 160 C 50 60, 330 20, 410 110 C 470 190, 330 290, 190 275 C 70 262, 40 190, 95 120"/></svg>
+            <p class="note">I nomi dei primi soci</p>
+            <p class="yl a-up" style="--d:.2s">Tanto tempo fa, nel</p>
+            <p class="year a-up count" style="--d:.2s" data-from="2026" data-to="1955" data-d=".3" data-t="1.6">1955</p>
+          </div>
+          <span class="tc">Sc. 3 · 0:12 – 0:19</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 03 · Come è cominciata <span class="chip">Archivio</span> <span class="chip f">Motion graphic</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«Tanto tempo fa, nel» · contatore che torna indietro da 2026 a 1955 · cerchio verde sul registro con «I nomi dei primi soci»</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Nel 1955 un gruppo di agricoltori e allevatori decise di unirsi. Scrissero i loro nomi, uno sotto l'altro.</dd></div>
+            <div><dt>Regia</dt><dd>Tre foto d'archivio dal video «70 anni»: le contadine nel grano, il registro con i nomi scritti a mano, un bambino con il raccolto. Il bambino è lì apposta: chi guarda ha la sua età. Gli anni scorrono all'indietro come in una macchina del tempo e si fermano sul 1955. Sul registro un tratto verde, come fatto a pennarello, cerchia i nomi.</dd></div>
+            <div><dt>Girato</dt><dd>70 anni Produttori Arborea · 0:00–0:02, 0:16–0:19, 0:33–0:35 (dentro il blocco «Storia» 0:00–1:00 dell'elenco)</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 4 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s4 sabbia" tabindex="0" role="button" aria-label="Scena 4, rivedi animazione">
+          <div class="stage">
+            <img class="illu a-left" style="--d:.2s" src="assets/img/cooperazione-campagna.png" alt="" aria-hidden="true">
+            <div class="tblock">
+              <p class="word a-up" style="--d:.4s">Co<b>·</b>operare</p>
+              <p class="hl a-up" style="--d:1.4s">vuol dire lavorare insieme.</p>
+            </div>
+            <div class="seeds" id="seeds"></div>
+          </div>
+          <span class="tc">Sc. 4 · 0:19 – 0:25</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 04 · Che cos'è una cooperativa <span class="chip f">Illustrazione animata</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«Co·operare» · «vuol dire lavorare insieme.»</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Cooperativa vuol dire proprio questo: lavorare insieme e aiutarsi a vicenda.</dd></div>
+            <div><dt>Regia</dt><dd>La parola viene spezzata per farla capire: «co» (insieme) e «operare» (lavorare). A destra l'illustrazione «cooperazione» del DS, con due agricoltori che guardano insieme lo stesso foglio. In basso tanti semini arrivano da direzioni diverse e si mettono in fila: da soli erano sparsi, insieme fanno una forma.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 5 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s5 world" tabindex="0" role="button" aria-label="Scena 5, rivedi animazione">
+          <div class="stage">
+            <video class="bg clip" src="assets/clips/sc05-primoverde.mp4" poster="assets/clips/sc05-primoverde.jpg" muted playsinline preload="auto" aria-label="Mani che raccolgono patate, lavorazione delle carote e delle patate"></video>
+            <div class="scrim"></div>
+            <div class="fig foglia bob" style="--d:1.2s;right:23cqw;top:5cqw;width:12cqw"><img src="assets/img/carota-sabbia.png" alt="Carota"></div>
+            <div class="fig foglia bob" style="--d:2s;right:9cqw;top:10cqw;width:11cqw"><img src="assets/img/patate-sabbia.png" alt="Patate"></div>
+            <div class="fig foglia bob" style="--d:2.8s;right:17cqw;top:21cqw;width:10cqw"><img src="assets/img/angurie-sabbia.png" alt="Angurie"></div>
+            <div class="tblock">
+              <p class="hl a-up" style="--d:.5s">C'è chi semina, raccoglie e prepara frutta e verdura.</p>
+              <p class="who a-up" style="--d:5.5s">Sono le persone di Primoverde</p>
+            </div>
+          </div>
+          <div class="mark a-up" style="--d:5.8s"><img class="b" src="assets/loghi/primoverde-bianco.png" alt="Primoverde"><img class="e" src="assets/loghi/produttori-arborea-bianco.png" alt="Produttori Arborea"></div>
+          <span class="tc">Sc. 5 · 0:25 – 0:35</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 05 · Chi coltiva <span class="chip">Riprese</span> <span class="chip f">Figurine animate</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«C'è chi semina, raccoglie e prepara frutta e verdura.» · «Sono le persone di Primoverde» · marchio Primoverde con endorser</dd></div>
+            <div><dt>Voce</dt><dd class="vo">C'è chi semina e raccoglie patate, carote e angurie, e chi le prepara per la tua tavola. Sono le persone di Primoverde.</dd></div>
+            <div><dt>Regia</dt><dd>Prima le mani nella terra, poi le persone al lavoro sulla linea delle carote e delle patate. Le figurine (illustrazioni del DS in cerchi foglia) spuntano quando la voce nomina ogni prodotto, poi ondeggiano piano. Il marchio arriva solo quando la voce dice «Primoverde».</dd></div>
+            <div><dt>Girato</dt><dd>Spot Novelle 0:07–0:10 · 70 anni 1:30–1:33 · Cooperativa 4k 0:54–0:56 · Fonni 2:15–2:17</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 6 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s6 world" tabindex="0" role="button" aria-label="Scena 6, rivedi animazione">
+          <div class="stage">
+            <video class="bg clip" src="assets/clips/sc06-rossopregio.mp4" poster="assets/clips/sc06-rossopregio.jpg" muted playsinline preload="auto" aria-label="Il centro di allevamento visto dall'alto e i bovini in stalla"></video>
+            <div class="scrim"></div>
+            <div class="vcard" style="--d:3.4s;right:7cqw"><video class="clip" src="assets/clips/sc06-rossopregio-v.mp4" poster="assets/clips/sc06-rossopregio-v.jpg" muted playsinline preload="auto" aria-label="Bovini che mangiano, ripresa verticale"></video></div>
+            <div class="fig carne bob" style="--d:4.4s;right:21cqw;top:27cqw;width:11cqw"><img src="assets/img/bovino-sabbia.png" alt="Bovino"></div>
+            <div class="tblock" style="width:52cqw">
+              <p class="hl a-up" style="--d:.5s">C'è chi si prende cura degli animali, ogni giorno.</p>
+              <p class="who a-up" style="--d:5.4s">Sono le persone di Rossopregio</p>
+            </div>
+          </div>
+          <div class="mark a-up" style="--d:5.7s"><img class="b" src="assets/loghi/rossopregio-bianco.png" alt="Rossopregio"><img class="e" src="assets/loghi/produttori-arborea-bianco.png" alt="Produttori Arborea"></div>
+          <span class="tc">Sc. 6 · 0:35 – 0:44</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 06 · Chi alleva <span class="chip">Riprese</span> <span class="chip f">Figurine animate</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«C'è chi si prende cura degli animali, ogni giorno.» · «Sono le persone di Rossopregio» · marchio Rossopregio con endorser</dd></div>
+            <div><dt>Voce</dt><dd class="vo">C'è chi si prende cura dei bovini ogni giorno, perché crescano sani e tranquilli. Sono le persone di Rossopregio.</dd></div>
+            <div><dt>Regia</dt><dd>Dal drone sopra il centro di allevamento si scende in stalla, fino ai musi dei vitelli. La ripresa verticale di «Generico» entra come una foto appoggiata sul tavolo, un po' storta: così il girato verticale si usa senza tagliarlo. La figurina del bovino è su un cerchio carne, il colore di Rossopregio.</dd></div>
+            <div><dt>Girato</dt><dd>Cooperativa 4k 0:16–0:19 · Fonni 3:41–3:46 · verticale: Generico 0:42–0:48</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 7 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s7 world" tabindex="0" role="button" aria-label="Scena 7, rivedi animazione">
+          <div class="stage">
+            <video class="bg clip" src="assets/clips/sc07-meridoro.mp4" poster="assets/clips/sc07-meridoro.jpg" muted playsinline preload="auto" aria-label="Operatrice al mangimificio, raccolta del mais, carro miscelatore"></video>
+            <div class="scrim"></div>
+            <div class="vcard" style="--d:3s;right:7cqw"><video class="clip" src="assets/clips/sc07-meridoro-v.mp4" poster="assets/clips/sc07-meridoro-v.jpg" muted playsinline preload="auto" aria-label="Operatore che prepara le balle Fiberfeed, il camion Meridoro"></video></div>
+            <div class="fig campagna bob" style="--d:4s;right:22cqw;top:9cqw;width:10cqw"><img src="assets/img/spiga-di-grano-oro.png" alt="Spiga"></div>
+            <div class="fig campagna bob" style="--d:4.6s;right:24cqw;top:25cqw;width:9cqw"><img src="assets/img/mais-oro.png" alt="Mais"></div>
+            <div class="tblock" style="width:54cqw">
+              <p class="hl a-up" style="--d:.5s">C'è chi prepara il cibo per gli animali e chi lo porta in tutta l'isola.</p>
+              <p class="who a-up" style="--d:6.4s">Sono le persone di Meridoro</p>
+            </div>
+          </div>
+          <div class="mark a-up" style="--d:6.7s"><img class="b" src="assets/loghi/meridoro-bianco.png" alt="Meridoro"><img class="e" src="assets/loghi/produttori-arborea-bianco.png" alt="Produttori Arborea"></div>
+          <span class="tc">Sc. 7 · 0:44 – 0:54</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 07 · Chi prepara il cibo per gli animali <span class="chip">Riprese</span> <span class="chip f">Figurine animate</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«C'è chi prepara il cibo per gli animali e chi lo porta in tutta l'isola.» · «Sono le persone di Meridoro» · marchio Meridoro con endorser</dd></div>
+            <div><dt>Voce</dt><dd class="vo">E c'è chi prepara il cibo per gli animali e chi lo porta con il camion in tutta l'isola. Sono le persone di Meridoro.</dd></div>
+            <div><dt>Regia</dt><dd>L'operatrice alla linea del mangimificio, il mais raccolto nei campi, il grande carro miscelatore («macchine grandi come una casa», per un bambino). Nella foto verticale c'è prima il ragazzo che prepara le balle Fiberfeed, poi il camion Meridoro. Le figurine di spiga e mais sono in oro su campagna, i colori di Meridoro.</dd></div>
+            <div><dt>Girato</dt><dd>70 anni 2:10–2:13 · Fonni 2:45–2:49 e 2:56–3:00 · verticali: Generico 0:14–0:18, Camion 0:05–0:09</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 8 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s8 sabbia" tabindex="0" role="button" aria-label="Scena 8, rivedi animazione">
+          <div class="stage">
+            <div class="tblock">
+              <p class="num n1 a-up" style="--d:.3s"><span class="count" data-from="0" data-to="290" data-d=".5" data-t="2.2">290</span><small>soci</small></p>
+              <p class="num n2 a-up" style="--d:2.8s"><span class="count" data-from="0" data-to="150" data-d="3" data-t="1.6">150</span><small>persone che ci lavorano ogni giorno</small></p>
+            </div>
+            <div class="dots" id="dots"></div>
+            <p class="legend a-fade" style="--d:5s"><i></i> ogni semino vale 10 persone</p>
+          </div>
+          <span class="tc">Sc. 8 · 0:54 – 1:01</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 08 · Quante persone <span class="chip f">Motion graphic</span> <span class="chip o">Dati reali</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>290 · «soci» · 150 · «persone che ci lavorano ogni giorno» · «ogni semino vale 10 persone»</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Oggi sono più di 290 soci e 150 persone che ci lavorano ogni giorno. Ognuno fa la sua parte.</dd></div>
+            <div><dt>Regia</dt><dd>I numeri contano verso l'alto e intanto i semini riempiono la griglia: 29 verdi per i soci, poi 15 oro per chi ci lavora. Un bambino non sa quanto sono 290 persone, ma vede quanti semini riempiono il riquadro.</dd></div>
+            <div><dt>Fonte</dt><dd>Company Profile 2026, pag. 4: 290 soci produttori, 150 dipendenti.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 9 ─────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s9 notte" tabindex="0" role="button" aria-label="Scena 9, rivedi animazione">
+          <div class="stage">
+            <video class="bg clip" src="assets/clips/sc09-squadra.mp4" poster="assets/clips/sc09-squadra.jpg" muted playsinline preload="auto" aria-label="Le persone della cooperativa davanti alla sede, il drone si allontana"></video>
+            <div class="scrim"></div>
+            <div class="tblock">
+              <p class="hl a-up" style="--d:2s">Anche il lavoro di mamma e papà è un pezzo di questa storia.</p>
+              <p class="hl b a-up" style="--d:4.6s">Una storia che costruiamo insieme.</p>
+            </div>
+          </div>
+          <span class="tc">Sc. 9 · 1:01 – 1:09</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 09 · Insieme <span class="chip">Riprese</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>«Anche il lavoro di mamma e papà è un pezzo di questa storia.» · «Una storia che costruiamo insieme.»</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Anche il lavoro di mamma e papà è un pezzo di questa storia: una storia che costruiamo insieme, da più di settant'anni.</dd></div>
+            <div><dt>Regia</dt><dd>Il gruppo delle persone della cooperativa davanti alla sede, con il drone che si allontana piano e allarga la vista fino a tutto lo stabilimento. Nessuna grafica oltre al testo. È il momento affettivo: un bambino può cercare la mamma o il papà nel gruppo.</dd></div>
+            <div><dt>Girato</dt><dd>70 anni 2:48–2:55 (non è nell'elenco frame: da confermare)</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <!-- 10 ────────────────────────────────────────────────────────── -->
+      <article class="beat">
+        <div class="frame s10" tabindex="0" role="button" aria-label="Scena 10, rivedi animazione">
+          <div class="stage">
+            <div class="lock a-up" style="--d:.3s"><img src="assets/loghi/produttori-arborea-bianco.png" alt="Produttori Arborea"></div>
+            <p class="since a-fade" style="--d:1.2s">Insieme dal 1955</p>
+            <div class="brands">
+              <img class="a-in" style="--d:1.6s" src="assets/loghi/primoverde-bianco.png" alt="Primoverde">
+              <img class="a-in" style="--d:1.9s" src="assets/loghi/rossopregio-bianco.png" alt="Rossopregio">
+              <img class="a-in md" style="--d:2.2s" src="assets/loghi/meridoro-bianco.png" alt="Meridoro">
+            </div>
+          </div>
+          <span class="tc">Sc. 10 · 1:09 – 1:13</span><span class="replay">↻ Rivedi</span>
+        </div>
+        <div class="info">
+          <p class="idx">Scena 10 · Firma <span class="chip f">Motion graphic</span></p>
+          <dl>
+            <div><dt>A schermo</dt><dd>Marchio Produttori Arborea · «Insieme dal 1955» · Primoverde, Rossopregio, Meridoro</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Nessuna voce: chiude la musica.</dd></div>
+            <div><dt>Regia</dt><dd>Fondo campagna, marchi in bianco: Produttori Arborea al centro, i tre marchi in fila sotto, come nella chiusura del video «70 anni». Entrano con una dissolvenza.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</main>
+
+<section class="panel">
+  <div class="wrap">
+    <h2>I tagli del girato</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Scena</th><th>Video</th><th>Tagli usati</th><th>Elenco frame</th></tr></thead>
+        <tbody>
+          <tr><td>03 · 1955</td><td>70 anni Produttori Arborea</td><td>0:00–0:02 · 0:16–0:19 · 0:33–0:35</td><td>Dentro «Storia» 0:00–1:00</td></tr>
+          <tr><td>05 · Primoverde</td><td>Spot Novelle · 70 anni · Cooperativa 4k · Fonni</td><td>0:07–0:10 · 1:30–1:33 · 0:54–0:56 · 2:15–2:17</td><td>Tutti dentro i tagli Primoverde</td></tr>
+          <tr><td>06 · Rossopregio</td><td>Cooperativa 4k · Fonni · Generico (verticale)</td><td>0:16–0:19 · 3:41–3:46 · 0:42–0:48</td><td>Tutti dentro i tagli Rossopregio</td></tr>
+          <tr><td>07 · Meridoro</td><td>70 anni · Fonni · Generico e Camion (verticali)</td><td>2:10–2:13 · 2:45–2:49 · 2:56–3:00 · 0:14–0:18 · 0:05–0:09</td><td>Tutti dentro i tagli Meridoro</td></tr>
+          <tr><td>09 · Insieme</td><td>70 anni Produttori Arborea</td><td>2:48–2:55</td><td><strong>Fuori elenco</strong>: la foto di gruppo davanti alla sede</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--pa-ferro);margin-top:var(--pa-space-m)">I clip della pagina sono anteprime leggere (720p, senza audio). Il montaggio finale parte dai file originali in 4K. «Spot Fiberfeed» per ora non è usato: le riprese di pecore e mungitura raccontano bene Meridoro, ma la scena era già piena.</p>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="wrap">
+    <h2>Punti da confermare</h2>
+    <div class="cards">
+      <div class="card"><h3>La voce</h3><p>Proposta: una voce adulta calda e lenta che parla ai bambini. In alternativa la domanda della scena 1 la può fare un bambino vero, magari il figlio di un dipendente, e il resto lo racconta l'adulto. Renderebbe il video più autentico.</p></div>
+      <div class="card"><h3>Chi fondò la cooperativa</h3><p>Nel testo scriviamo «nel 1955 un gruppo di agricoltori e allevatori decise di unirsi». L'anno viene dal Company Profile («nata 71 anni fa») e dalla chiusura dello spot Fiberfeed («Dal 1955»). Va confermato chi erano i fondatori e se il registro del video è davvero quello dei primi soci.</p></div>
+      <div class="card"><h3>Il vecchio marchio sulle magliette</h3><p>Nelle riprese di «Cooperativa 4k» e «Fonni» i lavoratori indossano magliette con il vecchio marchio Arborea (la coccarda). Si vede poco e le persone restano vere, ma se la cooperativa preferisce evitarlo si cambiano i tagli.</p></div>
+      <div class="card"><h3>La foto di gruppo</h3><p>La chiusura usa il gruppo davanti alla sede (70 anni, 2:48–2:55), che non è nell'elenco frame. È l'inquadratura che dà più senso al finale. Se non si può usare, l'alternativa è la vista dal drone sulla piana di Arborea (70 anni 2:46).</p></div>
+      <div class="card"><h3>Illustrazioni</h3><p>Le figurine sono illustrazioni del design system. Se si vuole un tocco più «da bambini» (personaggi, un filo disegnato che accompagna la storia) si può disegnare una serie apposta, ma servono più giorni del 21 novembre: la propongo per un video successivo.</p></div>
+      <div class="card"><h3>Musica</h3><p>Tappeto acustico, leggero e luminoso (chitarra, glockenspiel), con un piccolo crescendo sulla scena 9 e chiusura sulla firma.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Storyboard · Riprese dai video della cooperativa · Illustrazioni, marchi e grafica dal design system Produttori Arborea · Testi e voce in bozza, da approvare</div></footer>
+
+<script>
+// 12 punti vendita Meridoro (posizioni % sulla mappa del DS, dal video punti vendita)
+const HUBS = [[62.66,7.11],[27.68,23.92],[55.27,28.90],[29.79,31.29],[77.18,33.43],[25.43,40.06],[46.15,39.54],[64.88,48.79],[27.19,69.27],[27.92,79.34],[61.30,78.11]];
+const ARBOREA = [25.37,62.39];
+const map = document.getElementById('map');
+HUBS.forEach(([x,y],i) => {
+  const p = document.createElement('i'); p.className = 'pin a-in';
+  p.style.left = x+'%'; p.style.top = y+'%'; p.style.setProperty('--d', (3 + i*.22)+'s'); map.appendChild(p);
+});
+map.insertAdjacentHTML('beforeend',
+  `<i class="ring" style="left:${ARBOREA[0]}%;top:${ARBOREA[1]}%;--d:1.4s"></i>
+   <i class="pin home a-in" style="left:${ARBOREA[0]}%;top:${ARBOREA[1]}%;--d:1s"><span>Arborea</span></i>`);
+
+// Sc. 4: semini che arrivano da direzioni diverse e si mettono in fila (2 righe × 8)
+const seeds = document.getElementById('seeds');
+for (let i = 0; i < 16; i++) {
+  const s = document.createElement('i'); s.className = 'seed';
+  const col = i % 8, row = Math.floor(i / 8);
+  s.style.left = (col * 12.5) + '%'; s.style.top = (row * 50) + '%';
+  const a = Math.random() * Math.PI * 2;
+  s.style.setProperty('--fx', (Math.cos(a) * 30) + 'cqw'); s.style.setProperty('--fy', (Math.sin(a) * 20) + 'cqw');
+  s.style.setProperty('--d', (2.2 + Math.random() * 1.2) + 's');
+  seeds.appendChild(s);
+}
+
+// Sc. 8: 29 semini verdi (soci) + 15 oro (dipendenti), ogni semino = 10 persone
+const dots = document.getElementById('dots');
+for (let i = 0; i < 44; i++) {
+  const d = document.createElement('i'); d.className = 'a-in' + (i >= 29 ? ' o' : '');
+  d.style.setProperty('--d', (i < 29 ? .5 + i * .075 : 3 + (i - 29) * .1) + 's'); dots.appendChild(d);
+}
+
+// riproduzione
+const frames = [...document.querySelectorAll('.frame')];
+const animToggle = document.getElementById('animToggle');
+function count(el) {
+  const from = +el.dataset.from, to = +el.dataset.to, d = +el.dataset.d * 1000, t = +el.dataset.t * 1000;
+  const t0 = performance.now(); el.textContent = from;
+  (function step(now) {
+    const k = Math.min(1, Math.max(0, (now - t0 - d) / t)), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = Math.round(from + (to - from) * e);
+    if (k < 1 && el.closest('.frame').classList.contains('play')) requestAnimationFrame(step);
+  })(t0);
+}
+function play(f) {
+  if (!animToggle.checked) return;
+  f.classList.remove('play', 'static'); void f.offsetWidth; f.classList.add('play');
+  f.querySelectorAll('.count').forEach(count);
+  f.querySelectorAll('video.clip').forEach(v => { v.currentTime = 0; v.play().catch(() => {}); });
+}
+function setStatic() {
+  frames.forEach(f => { f.classList.remove('play'); f.classList.add('static');
+    f.querySelectorAll('video.clip').forEach(v => { v.pause(); v.currentTime = 0; });
+    f.querySelectorAll('.count').forEach(c => c.textContent = c.dataset.to); });
+}
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(e.target); }), {threshold: .5});
+frames.forEach(f => {
+  io.observe(f);
+  f.addEventListener('click', () => play(f));
+  f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(f); } });
+});
+animToggle.addEventListener('change', () => animToggle.checked ? frames.forEach(play) : setStatic());
+// ?statico mostra lo stato finale di ogni frame (stampa, controllo)
+if (location.search.includes('statico')) { animToggle.checked = false; setStatic(); }
+document.getElementById('bigToggle').addEventListener('change', e => document.getElementById('grid').classList.toggle('big', e.target.checked));
+</script>
+</body>
+</html>
