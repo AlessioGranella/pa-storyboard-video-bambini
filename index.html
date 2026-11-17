@@ -307,23 +307,36 @@ td{padding:10px 16px;border-bottom:1px solid rgba(0,73,40,.1);vertical-align:top
 .tablewrap{overflow-x:auto;border-radius:var(--pa-radius-m)}
 footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var(--pa-ferro)}
 @media (prefers-reduced-motion:reduce){.play *{animation-duration:.01s!important;animation-iteration-count:1!important}}
+
+/* ── v5: riprese a tutto schermo ──────────────────────────────────────── */
+.full{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ov{position:absolute;left:4.5cqw;right:4.5cqw;bottom:4.2cqw;z-index:3;color:var(--pa-sabbia);display:flex;align-items:flex-end;gap:4cqw}
+.ov .big{font-family:var(--title);font-weight:500;font-size:9.5cqw;line-height:.86}
+.ov .big small{display:block;font-size:2.3cqw;line-height:1.2;margin-top:.9cqw}
+.ov .big.o{color:var(--pa-oro)}
+.blogo{position:absolute;left:4.5cqw;bottom:4.5cqw;z-index:3;width:21cqw;height:auto}
+.blogo.md{width:24cqw}
+.scrim.soft{background:linear-gradient(to top,rgba(0,14,30,.55) 0%,rgba(0,14,30,.18) 30%,transparent 50%)}
+.endcard{position:absolute;inset:0;z-index:4;background:var(--pa-sabbia);opacity:0}
+.play .endcard{animation:fade .7s ease var(--d,5.4s) both}
+.static .endcard{opacity:1}
 </style>
 </head>
 <body>
 
 <header class="masthead">
   <div class="wrap">
-    <p class="eyebrow">Produttori Arborea · Storyboard · Bozza</p>
+    <p class="eyebrow">Produttori Arborea · Storyboard · Bozza 2</p>
     <h1>La cooperativa raccontata ai bambini</h1>
-    <p class="sub">Un video per i figli dei dipendenti e dei soci. Parte dalla mattina di mamma e papà, che vanno tutti a lavorare nello stesso posto, e racconta la Cooperativa attraverso le persone: chi la fondò nel 1955, chi coltiva, chi alleva, chi prepara il cibo per gli animali. I marchi compaiono accanto alle persone e ai prodotti. Le riprese vengono dai video della cooperativa, dai tagli indicati nell'elenco frame; illustrazioni e grafica vengono dal design system.</p>
+    <p class="sub">Un video per i figli dei dipendenti e dei soci, sul testo scritto dalla cooperativa. Si parte dal 1955 con le foto storiche, si arriva alla cooperativa di oggi, ai tre marchi e alle persone, e si chiude con mamma e papà dentro la grande squadra. Tutte le immagini sono riprese reali a tutto schermo, prese dai video della cooperativa.</p>
     <dl class="meta">
       <div><dt>Pubblicazione</dt><dd>21 novembre 2026</dd></div>
-      <div><dt>Durata</dt><dd>1:13</dd></div>
+      <div><dt>Durata</dt><dd>1:12</dd></div>
       <div><dt>Formato</dt><dd>Orizzontale 16:9</dd></div>
-      <div><dt>Scene</dt><dd>10</dd></div>
+      <div><dt>Scene</dt><dd>7</dd></div>
       <div><dt>Pubblico</dt><dd>Bambini e ragazzi</dd></div>
-      <div><dt>Tecnica</dt><dd>Riprese della cooperativa + illustrazioni animate del DS</dd></div>
-      <div><dt>Voce</dt><dd>Narratore caldo, da scegliere</dd></div>
+      <div><dt>Immagini</dt><dd>Riprese reali e foto storiche a tutto schermo</dd></div>
+      <div><dt>Voce</dt><dd>Testo della cooperativa, narratore da scegliere</dd></div>
     </dl>
   </div>
 </header>
@@ -331,9 +344,9 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
 <section class="idea">
   <div class="wrap">
     <div class="cols">
-      <div class="card"><h3>Il filo del racconto</h3><p>Una domanda, la risposta e poi la storia. Si comincia dalla mattina di ogni famiglia, si torna al 1955 e si vedono le persone di oggi, mondo per mondo. Il video si chiude sulla squadra intera davanti alla sede.</p></div>
-      <div class="card"><h3>Come aiutiamo a capire</h3><p>Le illustrazioni al tratto del DS si muovono: la carota spunta dalla terra, l'anguria rotola, il bovino cammina, la spiga cresce e ondeggia, la Sardegna e i due agricoltori si disegnano davanti agli occhi. Ogni mondo ha il colore del suo marchio (Primoverde foglia, Rossopregio carne, Meridoro oro), così i bambini lo riconoscono anche senza leggere. I numeri si vedono con i pallini a forma di seme: ogni pallino vale 10 persone. Il cerchio verde sul registro fa vedere che i nomi sono quelli dei primi soci.</p></div>
-      <div class="card"><h3>Il tono</h3><p>Frasi corte e parole che un bambino di 7–8 anni conosce. Si parla al «tu» e non si usano parole come «filiera», «reparto» o «stabilimento». La voce è calda e lenta: un adulto che racconta, non uno spot.</p></div>
+      <div class="card"><h3>Il filo del racconto</h3><p>Lo segue il testo della cooperativa: il 1955, la cooperativa di oggi, Primoverde, Meridoro e Rossopregio, le persone. Alla fine si torna ai bambini: anche mamma e papà sono parte della squadra.</p></div>
+      <div class="card"><h3>Le immagini</h3><p>Ogni inquadratura occupa tutto lo schermo: niente riquadri, finestre o collage. Le foto storiche hanno movimenti di camera lenti (avvicinamenti, scorrimenti), le riprese di oggi sono tagliate a tempo con la voce. I marchi compaiono solo con il loro logo, senza payoff.</p></div>
+      <div class="card"><h3>Grafica leggera</h3><p>Sullo schermo ci sono solo le date, i numeri e i loghi, in basso a sinistra e con i caratteri del brand. Servono ai bambini per fissare le cose importanti senza coprire le persone.</p></div>
     </div>
   </div>
 </section>
@@ -354,264 +367,157 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
 
       <!-- 1 ─────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame s1 sabbia" tabindex="0" role="button" aria-label="Scena 1, rivedi animazione">
+        <div class="frame s1 notte" tabindex="0" role="button" aria-label="Scena 1, rivedi">
           <div class="stage">
-            <div class="cam"><div class="scape">
-              <div class="sky"><i class="sun"></i><img src="assets/img/campi-cielo.png" alt="" aria-hidden="true"></div>
-              <img src="assets/img/campi-terra.png" alt="Illustrazione: colline e campi all'alba">
-              <div class="road" id="road" aria-hidden="true"></div>
-            </div></div>
-            <div class="veil" aria-hidden="true"></div>
-            <div class="tblock">
-              <p class="hl a-up" style="--d:.5s">Tanti genitori, ogni mattina,</p>
-              <p class="hl xl q a-in" style="--d:2.2s">vanno a lavorare nello stesso posto.</p>
+            <video class="clip full" src="assets/clips/v5-s1-storia.mp4" poster="assets/clips/v5-s1-storia.jpg" muted playsinline preload="auto" aria-label="Foto storiche: l'atto del 1955, Arborea dall'alto, il registro dei soci, il lavoro nei campi, la festa davanti alla sede"></video>
+            <div class="scrim soft"></div>
+            <div class="ov">
+              <p class="big a-up" style="--d:.8s">1955<small>Arborea</small></p>
+              <p class="big o a-up" style="--d:5.2s">13<small>agricoltori</small></p>
             </div>
           </div>
-          <span class="tc">Sc. 1 · 0:00 – 0:05</span><span class="replay">↻ Rivedi</span>
+          <span class="tc">Sc. 1 · 0:00 – 0:12</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 01 · La mattina <span class="chip f">Volo di drone animato</span></p>
+          <p class="idx">Scena 01 · Come tutto è iniziato <span class="chip o">Foto storiche</span> <span class="chip ">Movimenti di camera</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«Tanti genitori, ogni mattina,» · «vanno a lavorare nello stesso posto.»</dd></div>
-            <div><dt>Voce</dt><dd class="vo">Tanti genitori, ogni mattina, vanno a lavorare nello stesso posto.</dd></div>
-            <div><dt>Regia</dt><dd>Una ripresa da drone, ma disegnata: l'illustrazione «campi» del DS in campagna, divisa in livelli. La camera vola in avanti sulle colline, leggermente inclinata, con il piccolo ondeggiare di un drone in aria; il cielo è lontano e cresce meno della terra, così si sente la profondità. Intanto sorge il sole, un cerchio arancio pieno sopra il tratto. Lungo la strada compaiono dei puntini arancio, i passi di mamma e papà che partono: il drone li segue verso l'orizzonte. La seconda riga entra per ultima, più grande e in arancio. Nel montaggio finale il volo si può rifare in After Effects con gli stessi livelli (cielo, terra, sole).</dd></div>
+            <div><dt>Voce</dt><dd class="vo">La nostra storia è iniziata nel 1955, qui ad Arborea. 13 agricoltori hanno deciso di unirsi e lavorare insieme, dando vita alla Cooperativa Produttori Arborea.</dd></div>
+            <div><dt>A schermo</dt><dd>«1955 · Arborea» sull'atto costitutivo, poi «13 agricoltori» sul registro dei nomi. Nient'altro: le foto restano protagoniste.</dd></div>
+            <div><dt>Riprese</dt><dd>«70 anni Produttori Arborea», blocco Storia: atto costitutivo (0:23), Arborea dall'alto (0:06), registro dei soci (0:18), lavoro nei campi (0:10), festa davanti alla sede (1:02).</dd></div>
+            <div><dt>Regia</dt><dd>Cinque foto storiche a tutto schermo, una dopo l'altra, ognuna con un movimento di camera lento: sull'atto la camera scorre lungo la scrittura, su Arborea si avvicina, sul registro scende lungo i nomi, sui campi scorre da sinistra a destra, sulla festa si allontana e scopre la folla. Tagli netti a tempo con la voce. Le foto restano in bianco e nero, come sono.</dd></div>
           </dl>
         </div>
       </article>
 
       <!-- 2 ─────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame s2" tabindex="0" role="button" aria-label="Scena 2, rivedi animazione">
+        <div class="frame s2 notte" tabindex="0" role="button" aria-label="Scena 2, rivedi">
           <div class="stage">
-            <div class="tblock">
-              <p class="hl a-up" style="--d:.3s">Si chiama Produttori Arborea.</p>
-              <p class="body a-up" style="--d:1.6s">È una cooperativa nata ad Arborea. Oggi lavora in tutta la Sardegna.</p>
-            </div>
-            <div class="map" id="map">
-              <img class="ani e-draw" style="--d:0s;--w:2.4s" src="assets/img/mappa-sardegna-oro.png" alt="Illustrazione della Sardegna">
+            <video class="clip full" src="assets/clips/v5-s2-oggi.mp4" poster="assets/clips/v5-s2-oggi.jpg" muted playsinline preload="auto" aria-label="La cooperativa oggi: vista dal drone, soci nella serra, assemblea, laboratorio"></video>
+            <div class="scrim soft"></div>
+            <div class="ov">
+              <p class="big a-up" style="--d:4.4s"><span class="count" data-from="0" data-to="300" data-d="4.5" data-t="1.4">300</span><small>soci</small></p>
+              <p class="big o a-up" style="--d:6.6s"><span class="count" data-from="0" data-to="180" data-d="6.7" data-t="1.4">180</span><small>dipendenti</small></p>
             </div>
           </div>
-          <span class="tc">Sc. 2 · 0:05 – 0:12</span><span class="replay">↻ Rivedi</span>
+          <span class="tc">Sc. 2 · 0:12 – 0:22</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 02 · Il nome <span class="chip f">Illustrazione animata</span> <span class="chip o">Dati reali</span></p>
+          <p class="idx">Scena 02 · La cooperativa oggi <span class="chip f">Riprese reali</span> <span class="chip o">Dati dallo script</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«Si chiama Produttori Arborea.» · «È una cooperativa nata ad Arborea. Oggi lavora in tutta la Sardegna.» · sulla mappa: Arborea</dd></div>
-            <div><dt>Voce</dt><dd class="vo">Si chiama Produttori Arborea. È una cooperativa nata ad Arborea. Oggi lavora in tutta la Sardegna.</dd></div>
-            <div><dt>Regia</dt><dd>La mappa illustrata della Sardegna (DS) in oro su campagna. Prima si accende Arborea, con un punto arancio che pulsa come un «sei qui». Poi compaiono uno dopo l'altro i 12 punti vendita Meridoro, nelle stesse posizioni del video punti vendita, per far vedere che la cooperativa arriva in tutta l'isola senza elencare i paesi.</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Oggi la Cooperativa è una grande squadra: ci sono 300 soci e 180 dipendenti. Ognuno ha un ruolo diverso, ma tutti contribuiscono ogni giorno alla stessa storia.</dd></div>
+            <div><dt>A schermo</dt><dd>«300 soci» sull'assemblea, poi «180 dipendenti» sul laboratorio. I numeri contano da zero.</dd></div>
+            <div><dt>Riprese</dt><dd>Cooperativa 4k: la sede dal drone (0:36). 70 anni: soci nella serra (1:10), assemblea (2:35), laboratorio (2:11 e 2:13).</dd></div>
+            <div><dt>Regia</dt><dd>Si passa dal bianco e nero al colore: il drone apre sulla cooperativa di oggi, poi le persone, gruppo dopo gruppo. I due numeri salgono quando la voce li dice, in sabbia e in oro, in basso a sinistra sopra una leggera sfumatura scura.</dd></div>
           </dl>
         </div>
       </article>
 
       <!-- 3 ─────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame s3 notte" tabindex="0" role="button" aria-label="Scena 3, rivedi animazione">
+        <div class="frame s3 notte" tabindex="0" role="button" aria-label="Scena 3, rivedi">
           <div class="stage">
-            <video class="bg clip" src="assets/clips/sc03-archivio.mp4" poster="assets/clips/sc03-archivio.jpg" muted playsinline preload="auto" aria-label="Foto d'archivio: contadine nel grano, il registro dei soci, un bambino"></video>
-            <div class="scrim"></div>
-            <svg class="circle" viewBox="0 0 460 300" aria-hidden="true"><path d="M60 160 C 50 60, 330 20, 410 110 C 470 190, 330 290, 190 275 C 70 262, 40 190, 95 120"/></svg>
-            <p class="note">I nomi dei primi soci</p>
-            <p class="yl a-up" style="--d:.2s">Tanto tempo fa, nel</p>
-            <p class="year a-up count" style="--d:.2s" data-from="2026" data-to="1955" data-d=".3" data-t="1.6">1955</p>
+            <video class="clip full" src="assets/clips/v5-s3-primoverde.mp4" poster="assets/clips/v5-s3-primoverde.jpg" muted playsinline preload="auto" aria-label="Primoverde: campo di patate, raccolta, carote, fragole, meloni, selezione, confezionamento, negozio"></video>
+            <div class="scrim soft"></div>
+            <img class="blogo a-up" style="--d:.8s" src="assets/loghi/primoverde-bianco.png" alt="Primoverde">
           </div>
-          <span class="tc">Sc. 3 · 0:12 – 0:19</span><span class="replay">↻ Rivedi</span>
+          <span class="tc">Sc. 3 · 0:22 – 0:36</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 03 · Come è cominciata <span class="chip">Archivio</span> <span class="chip f">Motion graphic</span></p>
+          <p class="idx">Scena 03 · Primoverde <span class="chip f">Riprese reali</span> <span class="chip ">Logo senza payoff</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«Tanto tempo fa, nel» · contatore che torna indietro da 2026 a 1955 · cerchio verde sul registro con «I nomi dei primi soci»</dd></div>
-            <div><dt>Voce</dt><dd class="vo">Nel 1955 un gruppo di agricoltori e allevatori decise di unirsi. Scrissero i loro nomi, uno sotto l'altro.</dd></div>
-            <div><dt>Regia</dt><dd>Tre foto d'archivio dal video «70 anni»: le contadine nel grano, il registro con i nomi scritti a mano, un bambino con il raccolto. Il bambino è lì apposta: chi guarda ha la sua età. Gli anni scorrono all'indietro come in una macchina del tempo e si fermano sul 1955. Sul registro un tratto verde, come fatto a pennarello, cerchia i nomi.</dd></div>
-            <div><dt>Girato</dt><dd>70 anni Produttori Arborea · 0:00–0:02, 0:16–0:19, 0:33–0:35 (dentro il blocco «Storia» 0:00–1:00 dell'elenco)</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Ma cosa fa la Cooperativa? Con Primoverde produciamo patate, carote, fragole, meloni, angurie e tanti altri prodotti che, dai campi, vengono raccolti, selezionati e preparati per arrivare sulle nostre tavole.</dd></div>
+            <div><dt>A schermo</dt><dd>Solo il marchio Primoverde in bianco, in basso a sinistra. Nessun payoff, nessun riquadro.</dd></div>
+            <div><dt>Riprese</dt><dd>Spot Novelle: campo (0:00). Fonni: raccolta (2:05), selezione (2:25). 70 anni: patate (1:30), carote (1:32), fragole (2:15), negozio (1:44). Cooperativa 4k: meloni (0:48), carote confezionate (0:56).</dd></div>
+            <div><dt>Regia</dt><dd>Il montaggio segue l'elenco della voce: campo, raccolta, le patate, le carote, le fragole, i meloni, poi la selezione, il confezionamento e il banco del negozio («sulle nostre tavole»). Ogni prodotto dura quanto la parola che lo nomina.</dd></div>
           </dl>
         </div>
       </article>
 
       <!-- 4 ─────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame s4 sabbia" tabindex="0" role="button" aria-label="Scena 4, rivedi animazione">
+        <div class="frame s4 notte" tabindex="0" role="button" aria-label="Scena 4, rivedi">
           <div class="stage">
-            <div class="illu ani e-fade" style="--d:0s"><video class="clip" src="assets/clips/sc04-cooperare.mp4" poster="assets/clips/sc04-cooperare.jpg" muted playsinline preload="auto" aria-label="Animazione: due agricoltori guardano insieme la pannocchia e il foglio, sorridono"></video></div>
-            <div class="tblock">
-              <p class="word a-up" style="--d:.4s">Co<b>·</b>operare</p>
-              <p class="hl a-up" style="--d:1.4s">vuol dire lavorare insieme.</p>
-            </div>
-            <div class="seeds" id="seeds"></div>
+            <video class="clip full" src="assets/clips/v5-s4-meridoro.mp4" poster="assets/clips/v5-s4-meridoro.jpg" muted playsinline preload="auto" aria-label="Meridoro: mangimificio, miscelatore, sacchi, mangime nelle mani, allevatore con le pecore, raccolta del foraggio"></video>
+            <div class="scrim soft"></div>
+            <img class="blogo md a-up" style="--d:.8s" src="assets/loghi/meridoro-bianco.png" alt="Meridoro">
           </div>
-          <span class="tc">Sc. 4 · 0:19 – 0:25</span><span class="replay">↻ Rivedi</span>
+          <span class="tc">Sc. 4 · 0:36 – 0:46</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 04 · Che cos'è una cooperativa <span class="chip f">Animazione AI</span></p>
+          <p class="idx">Scena 04 · Meridoro <span class="chip f">Riprese reali</span> <span class="chip ">Logo senza payoff</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«Co·operare» · «vuol dire lavorare insieme.»</dd></div>
-            <div><dt>Voce</dt><dd class="vo">Cooperativa vuol dire proprio questo: lavorare insieme e aiutarsi a vicenda.</dd></div>
-            <div><dt>Regia</dt><dd>La parola viene spezzata per farla capire: «co» (insieme) e «operare» (lavorare). A destra l'illustrazione «cooperazione» del DS diventa un vero cartone animato (generato con AI a partire dall'illustrazione, stesso tratto a incisione verde su sabbia): il ragazzo porge la pannocchia, l'agricoltore più anziano alza lo sguardo dal foglio, ride e la indica; la camera si avvicina piano. Il bordo sinistro sfuma nel fondo sabbia. In basso tanti semini arrivano da direzioni diverse e si mettono in fila: da soli erano sparsi, insieme fanno una forma.</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Con Meridoro produciamo i mangimi e mettiamo a disposizione prodotti e servizi che aiutano gli allevatori e gli agricoltori nel loro lavoro.</dd></div>
+            <div><dt>A schermo</dt><dd>Solo il marchio Meridoro in bianco, in basso a sinistra.</dd></div>
+            <div><dt>Riprese</dt><dd>Cooperativa 4k: mangimificio (0:21), sacchi (0:30). Fonni: miscelatore (2:57). Spot Fiberfeed: mangime nelle mani (0:08), allevatore con le pecore (0:06). 70 anni: raccolta del foraggio (2:21).</dd></div>
+            <div><dt>Regia</dt><dd>Prima dove nasce il mangime (stabilimento, miscelatore, sacchi), poi a chi serve: le mani dell'allevatore, le pecore, il campo dell'agricoltore.</dd></div>
           </dl>
         </div>
       </article>
 
       <!-- 5 ─────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame brand pv" tabindex="0" role="button" aria-label="Scena 5, rivedi animazione">
+        <div class="frame s5 notte" tabindex="0" role="button" aria-label="Scena 5, rivedi">
           <div class="stage">
-            <div class="win ani e-pop" style="--d:0s"><video class="clip" src="assets/clips/sc05-primoverde.mp4" poster="assets/clips/sc05-primoverde.jpg" muted playsinline preload="auto" aria-label="Mani che raccolgono patate, lavorazione delle carote e delle patate"></video></div>
-            <p class="say a-up" style="--d:.6s">C'è chi semina, raccoglie e prepara frutta e verdura.</p>
-            <div class="side">
-              <p class="lab a-up" style="--d:5.2s">Sono le persone di</p>
-              <img class="logo a-up" style="--d:5.5s" src="assets/loghi/primoverde.svg" alt="Primoverde">
-            </div>
-            <div class="zone" aria-hidden="true">
-              <i class="ground"></i>
-              <span class="it" style="left:3cqw;width:6.4cqw;height:13cqw;overflow:hidden"><span class="l-sway" style="display:block;transform-origin:50% 100%;--l:2.4s;--t:1.8s"><img class="ani e-rise" style="--d:1.2s" src="assets/img/carota-campagna.png" alt=""></span></span>
-              <span class="it ani e-roll" style="--d:2.2s;left:10.5cqw;width:9cqw"><img src="assets/img/anguria-tonda-campagna.png" alt=""></span>
-              <span class="it ani e-drop" style="--d:3.2s;left:20.5cqw;width:9cqw"><img src="assets/img/patate-campagna.png" alt=""></span>
-            </div>
+            <video class="clip full" src="assets/clips/v5-s5-rossopregio.mp4" poster="assets/clips/v5-s5-rossopregio.jpg" muted playsinline preload="auto" aria-label="Rossopregio: allevamenti dal drone, stalla, bovini, macelleria, hamburger, pascolo in Sardegna"></video>
+            <div class="scrim soft"></div>
+            <img class="blogo a-up" style="--d:.8s" src="assets/loghi/rossopregio-bianco.png" alt="Rossopregio">
           </div>
-          <span class="tc">Sc. 5 · 0:25 – 0:35</span><span class="replay">↻ Rivedi</span>
+          <span class="tc">Sc. 5 · 0:46 – 0:57</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 05 · Chi coltiva · Primoverde <span class="chip">Riprese</span> <span class="chip f">Illustrazioni animate</span></p>
+          <p class="idx">Scena 05 · Rossopregio <span class="chip f">Riprese reali</span> <span class="chip ">Logo senza payoff</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«C'è chi semina, raccoglie e prepara frutta e verdura.» · «Sono le persone di» + marchio Primoverde</dd></div>
-            <div><dt>Voce</dt><dd class="vo">C'è chi semina e raccoglie patate, carote e angurie, e chi le prepara per la tua tavola. Sono le persone di Primoverde.</dd></div>
-            <div><dt>Regia</dt><dd>Tutta la scena è verde foglia, il colore di Primoverde. Le riprese stanno in una finestra grande a sinistra: prima le mani nella terra, poi le persone sulla linea delle carote e delle patate. A destra, su una linea di terra, le illustrazioni seguono la voce: la carota spunta e ondeggia, l'anguria arriva rotolando, le patate cadono e rimbalzano. Il marchio Primoverde, nel suo verde campagna, arriva grande quando la voce lo nomina.</dd></div>
-            <div><dt>Girato</dt><dd>Spot Novelle 0:07–0:10 · 70 anni 1:30–1:33 · Cooperativa 4k 0:54–0:56 · Fonni 2:15–2:17</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Con Rossopregio seguiamo un percorso che parte dagli allevamenti e arriva fino ai prodotti che troviamo sulle nostre tavole. I bovini di questa filiera nascono e crescono in Sardegna.</dd></div>
+            <div><dt>A schermo</dt><dd>Solo il marchio Rossopregio in bianco, in basso a sinistra.</dd></div>
+            <div><dt>Riprese</dt><dd>Fonni: allevamenti dal drone (3:36), pascolo (3:27). Cooperativa 4k: stalla (0:17), bovini (0:20), macelleria (1:10), hamburger (1:11).</dd></div>
+            <div><dt>Regia</dt><dd>Il percorso della voce diventa il montaggio: dall'allevamento alla stalla, ai bovini, alla macelleria e alla confezione. L'ultima frase torna all'aperto, sui bovini al pascolo in Sardegna.</dd></div>
           </dl>
         </div>
       </article>
 
       <!-- 6 ─────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame brand rp" tabindex="0" role="button" aria-label="Scena 6, rivedi animazione">
+        <div class="frame s6 notte" tabindex="0" role="button" aria-label="Scena 6, rivedi">
           <div class="stage">
-            <div class="win ani e-pop" style="--d:0s"><video class="clip" src="assets/clips/sc06-rossopregio.mp4" poster="assets/clips/sc06-rossopregio.jpg" muted playsinline preload="auto" aria-label="Il centro di allevamento visto dall'alto e i bovini in stalla"></video></div>
-            <div class="vcard" style="--d:3.4s;left:51cqw;top:15cqw"><video class="clip" src="assets/clips/sc06-rossopregio-v.mp4" poster="assets/clips/sc06-rossopregio-v.jpg" muted playsinline preload="auto" aria-label="Bovini che mangiano, ripresa verticale"></video></div>
-            <p class="say a-up" style="--d:.6s;width:44cqw">C'è chi si prende cura degli animali, ogni giorno.</p>
-            <div class="side">
-              <p class="lab a-up" style="--d:5s">Sono le persone di</p>
-              <img class="logo a-up" style="--d:5.3s;width:20cqw" src="assets/loghi/rossopregio-bianco.png" alt="Rossopregio">
-            </div>
-            <div class="zone" aria-hidden="true">
-              <i class="ground"></i>
-              <span class="it ani e-walk" style="--d:1s;--w:3.6s;--x:30cqw;left:4cqw;width:21cqw"><span class="l-step" style="display:block;--d:1s;--n:9"><span class="l-breathe" style="display:block;transform-origin:50% 100%;--l:4.6s"><img src="assets/img/bovino-sabbia.png" alt=""></span></span></span>
-            </div>
+            <video class="clip full" src="assets/clips/v5-s6-persone.mp4" poster="assets/clips/v5-s6-persone.jpg" muted playsinline preload="auto" aria-label="Le persone: in produzione, alla selezione, in stalla, un allevatore che sorride"></video>
           </div>
-          <span class="tc">Sc. 6 · 0:35 – 0:44</span><span class="replay">↻ Rivedi</span>
+          <span class="tc">Sc. 6 · 0:57 – 1:03</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 06 · Chi alleva · Rossopregio <span class="chip">Riprese</span> <span class="chip f">Illustrazioni animate</span></p>
+          <p class="idx">Scena 06 · Le persone <span class="chip f">Riprese reali</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«C'è chi si prende cura degli animali, ogni giorno.» · «Sono le persone di» + marchio Rossopregio</dd></div>
-            <div><dt>Voce</dt><dd class="vo">C'è chi si prende cura dei bovini ogni giorno, perché crescano sani e tranquilli. Sono le persone di Rossopregio.</dd></div>
-            <div><dt>Regia</dt><dd>Tutta la scena è color carne, il colore di Rossopregio, con testi e marchio in bianco. Nella finestra: dal drone sul centro di allevamento si scende in stalla, fino ai musi dei vitelli. La ripresa verticale di «Generico» si appoggia sopra come una foto. A destra il bovino illustrato entra camminando a piccoli passi, si ferma e respira.</dd></div>
-            <div><dt>Girato</dt><dd>Cooperativa 4k 0:16–0:19 · Fonni 3:41–3:46 · verticale: Generico 0:42–0:48</dd></div>
+            <div><dt>Voce</dt><dd class="vo">Per fare tutto questo servono tante persone. Ognuno fa la sua parte e ogni lavoro è importante.</dd></div>
+            <div><dt>A schermo</dt><dd>Nessun testo: parlano i volti.</dd></div>
+            <div><dt>Riprese</dt><dd>Cooperativa 4k: meloni (0:50), selezione (0:58). 70 anni: produzione (2:17), allevatore (1:49). Fonni: allevatore con le pecore (3:19).</dd></div>
+            <div><dt>Regia</dt><dd>Tagli più brevi, una persona per inquadratura, ognuna nel suo lavoro. Si chiude sul sorriso dell'allevatore, che porta al finale.</dd></div>
           </dl>
         </div>
       </article>
 
       <!-- 7 ─────────────────────────────────────────────────────────── -->
       <article class="beat">
-        <div class="frame brand md" tabindex="0" role="button" aria-label="Scena 7, rivedi animazione">
+        <div class="frame s7 notte" tabindex="0" role="button" aria-label="Scena 7, rivedi">
           <div class="stage">
-            <div class="win ani e-pop" style="--d:0s"><video class="clip" src="assets/clips/sc07-meridoro.mp4" poster="assets/clips/sc07-meridoro.jpg" muted playsinline preload="auto" aria-label="Operatrice al mangimificio, raccolta del mais, carro miscelatore"></video></div>
-            <div class="vcard" style="--d:3s;left:51cqw;top:15cqw"><video class="clip" src="assets/clips/sc07-meridoro-v.mp4" poster="assets/clips/sc07-meridoro-v.jpg" muted playsinline preload="auto" aria-label="Operatore che prepara le balle Fiberfeed, il camion Meridoro"></video></div>
-            <p class="say a-up" style="--d:.6s;width:44cqw">C'è chi prepara il cibo per gli animali e chi lo porta in tutta l'isola.</p>
-            <div class="side">
-              <p class="lab a-up" style="--d:6s">Sono le persone di</p>
-              <img class="logo a-up" style="--d:6.3s" src="assets/loghi/meridoro-campagna.png" alt="Meridoro">
-            </div>
-            <div class="zone" aria-hidden="true">
-              <i class="ground"></i>
-              <span class="it" style="left:5cqw;width:8.5cqw"><span class="l-sway" style="display:block;transform-origin:50% 100%;--l:2.6s;--t:2.2s"><img class="ani e-grow" style="--d:1.2s" src="assets/img/spiga-di-grano-campagna.png" alt=""></span></span>
-              <span class="it" style="left:16cqw;width:7cqw"><span class="l-sway" style="display:block;transform-origin:50% 100%;--l:3s;--t:2.6s"><img class="ani e-grow" style="--d:1.8s" src="assets/img/mais-campagna.png" alt=""></span></span>
-              <i class="grain" style="left:9cqw;top:6cqw;--d:3s"></i>
-              <i class="grain" style="left:11cqw;top:8cqw;--d:3.5s"></i>
-              <i class="grain" style="left:19cqw;top:9cqw;--d:3.9s"></i>
-              <i class="grain" style="left:21cqw;top:7cqw;--d:4.4s"></i>
+            <video class="clip full" src="assets/clips/v5-s7-finale.mp4" poster="assets/clips/v5-s7-finale.jpg" muted playsinline preload="auto" aria-label="La squadra davanti alla sede, il drone si allontana"></video>
+            <div class="endcard s10" style="--d:5.4s">
+              <div class="lock a-up" style="--d:5.8s"><img src="assets/loghi/produttori-arborea.svg" alt="Produttori Arborea"></div>
+              <div class="brands">
+                <img class="a-in" style="--d:6.5s" src="assets/loghi/primoverde.svg" alt="Primoverde">
+                <img class="a-in md" style="--d:6.8s" src="assets/loghi/meridoro.svg" alt="Meridoro">
+                <img class="a-in" style="--d:7.1s" src="assets/loghi/rossopregio.svg" alt="Rossopregio">
+              </div>
             </div>
           </div>
-          <span class="tc">Sc. 7 · 0:44 – 0:54</span><span class="replay">↻ Rivedi</span>
+          <span class="tc">Sc. 7 · 1:03 – 1:12</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 07 · Chi prepara il cibo per gli animali · Meridoro <span class="chip">Riprese</span> <span class="chip f">Illustrazioni animate</span></p>
+          <p class="idx">Scena 07 · Il finale <span class="chip f">Riprese reali</span> <span class="chip ">Firma senza payoff</span></p>
           <dl>
-            <div><dt>A schermo</dt><dd>«C'è chi prepara il cibo per gli animali e chi lo porta in tutta l'isola.» · «Sono le persone di» + marchio Meridoro</dd></div>
-            <div><dt>Voce</dt><dd class="vo">E c'è chi prepara il cibo per gli animali e chi lo porta con il camion in tutta l'isola. Sono le persone di Meridoro.</dd></div>
-            <div><dt>Regia</dt><dd>Tutta la scena è oro, il colore di Meridoro, con testi e marchio in verde campagna. Nella finestra: l'operatrice alla linea del mangimificio, il mais raccolto nei campi, il carro miscelatore. Sopra, in verticale, il ragazzo che prepara le balle Fiberfeed e poi il camion Meridoro. A destra spiga e mais crescono dalla terra e ondeggiano; ne cadono dei semini, il cibo degli animali.</dd></div>
-            <div><dt>Girato</dt><dd>70 anni 2:10–2:13 · Fonni 2:45–2:49 e 2:56–3:00 · verticali: Generico 0:14–0:18, Camion 0:05–0:09</dd></div>
-            <div><dt>Nota</dt><dd class="note">Il marchio Meridoro in verde campagna non è tra le versioni del DS (oro, nero, bianco): sul fondo oro serve una tinta scura. Da confermare.</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 8 ─────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame s8 sabbia" tabindex="0" role="button" aria-label="Scena 8, rivedi animazione">
-          <div class="stage">
-            <div class="tblock">
-              <p class="num n1 a-up" style="--d:.3s"><span class="count" data-from="0" data-to="290" data-d=".5" data-t="2.2">290</span><small>soci</small></p>
-              <p class="num n2 a-up" style="--d:2.8s"><span class="count" data-from="0" data-to="150" data-d="3" data-t="1.6">150</span><small>persone che ci lavorano ogni giorno</small></p>
-            </div>
-            <div class="dots" id="dots"></div>
-            <p class="legend a-fade" style="--d:5s"><i></i> ogni semino vale 10 persone</p>
-          </div>
-          <span class="tc">Sc. 8 · 0:54 – 1:01</span><span class="replay">↻ Rivedi</span>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 08 · Quante persone <span class="chip f">Motion graphic</span> <span class="chip o">Dati reali</span></p>
-          <dl>
-            <div><dt>A schermo</dt><dd>290 · «soci» · 150 · «persone che ci lavorano ogni giorno» · «ogni semino vale 10 persone»</dd></div>
-            <div><dt>Voce</dt><dd class="vo">Oggi sono più di 290 soci e 150 persone che ci lavorano ogni giorno. Ognuno fa la sua parte.</dd></div>
-            <div><dt>Regia</dt><dd>I numeri contano verso l'alto e intanto i semini riempiono la griglia: 29 verdi per i soci, poi 15 oro per chi ci lavora. Un bambino non sa quanto sono 290 persone, ma vede quanti semini riempiono il riquadro.</dd></div>
-            <div><dt>Fonte</dt><dd>Company Profile 2026, pag. 4: 290 soci produttori, 150 dipendenti.</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 9 ─────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame s9 notte" tabindex="0" role="button" aria-label="Scena 9, rivedi animazione">
-          <div class="stage">
-            <video class="bg clip" src="assets/clips/sc09-squadra.mp4" poster="assets/clips/sc09-squadra.jpg" muted playsinline preload="auto" aria-label="Le persone della cooperativa davanti alla sede, il drone si allontana"></video>
-            <div class="scrim"></div>
-            <div class="tblock">
-              <p class="hl a-up" style="--d:2s">Anche il lavoro di mamma e papà è un pezzo di questa storia.</p>
-              <p class="hl b a-up" style="--d:4.6s">Una storia che costruiamo insieme.</p>
-            </div>
-          </div>
-          <span class="tc">Sc. 9 · 1:01 – 1:09</span><span class="replay">↻ Rivedi</span>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 09 · Insieme <span class="chip">Riprese</span></p>
-          <dl>
-            <div><dt>A schermo</dt><dd>«Anche il lavoro di mamma e papà è un pezzo di questa storia.» · «Una storia che costruiamo insieme.»</dd></div>
-            <div><dt>Voce</dt><dd class="vo">Anche il lavoro di mamma e papà è un pezzo di questa storia: una storia che costruiamo insieme, da più di settant'anni.</dd></div>
-            <div><dt>Regia</dt><dd>Il gruppo delle persone della cooperativa davanti alla sede, con il drone che si allontana piano e allarga la vista fino a tutto lo stabilimento. Nessuna grafica oltre al testo. È il momento affettivo: un bambino può cercare la mamma o il papà nel gruppo.</dd></div>
-            <div><dt>Girato</dt><dd>70 anni 2:48–2:55 (non è nell'elenco frame: da confermare)</dd></div>
-          </dl>
-        </div>
-      </article>
-
-      <!-- 10 ────────────────────────────────────────────────────────── -->
-      <article class="beat">
-        <div class="frame s10 sabbia" tabindex="0" role="button" aria-label="Scena 10, rivedi animazione">
-          <div class="stage">
-            <div class="lock a-up" style="--d:.3s"><img src="assets/loghi/produttori-arborea.svg" alt="Produttori Arborea"></div>
-            <p class="since a-fade" style="--d:1.2s">Insieme dal 1955</p>
-            <div class="brands">
-              <img class="a-in" style="--d:1.6s" src="assets/loghi/primoverde.svg" alt="Primoverde">
-              <img class="a-in" style="--d:1.9s" src="assets/loghi/rossopregio.svg" alt="Rossopregio">
-              <img class="a-in md" style="--d:2.2s" src="assets/loghi/meridoro.svg" alt="Meridoro">
-            </div>
-          </div>
-          <span class="tc">Sc. 10 · 1:09 – 1:13</span><span class="replay">↻ Rivedi</span>
-        </div>
-        <div class="info">
-          <p class="idx">Scena 10 · Firma <span class="chip f">Motion graphic</span></p>
-          <dl>
-            <div><dt>A schermo</dt><dd>Marchio Produttori Arborea · «Insieme dal 1955» · Primoverde, Rossopregio, Meridoro nei loro colori</dd></div>
-            <div><dt>Voce</dt><dd class="vo">Nessuna voce: chiude la musica.</dd></div>
-            <div><dt>Regia</dt><dd>Fondo sabbia, come la scena d'apertura: il racconto torna a casa. Produttori Arborea in campagna al centro, e sotto i tre marchi nei loro colori originali, gli stessi visti nelle scene 5, 6 e 7.</dd></div>
+            <div><dt>Voce</dt><dd class="vo">E sapete una cosa? Anche mamma e papà fanno parte di questa grande squadra! Benvenuti nella Cooperativa Produttori Arborea!</dd></div>
+            <div><dt>A schermo</dt><dd>Firma finale su sabbia: Produttori Arborea al centro, sotto Primoverde, Meridoro e Rossopregio nei loro colori. Nessun payoff.</dd></div>
+            <div><dt>Riprese</dt><dd>70 anni: la squadra davanti alla sede e il drone che si allontana (2:48–2:54).</dd></div>
+            <div><dt>Regia</dt><dd>Sulla domanda la squadra è a tutto schermo, vicina; su «Benvenuti» il drone sale e la sede si vede intera. Poi dissolvenza sulla firma: il logo della cooperativa al centro e i tre marchi sotto, nello stesso ordine in cui li racconta la voce.</dd></div>
           </dl>
         </div>
       </article>
@@ -627,15 +533,17 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
       <table>
         <thead><tr><th>Scena</th><th>Video</th><th>Tagli usati</th><th>Elenco frame</th></tr></thead>
         <tbody>
-          <tr><td>03 · 1955</td><td>70 anni Produttori Arborea</td><td>0:00–0:02 · 0:16–0:19 · 0:33–0:35</td><td>Dentro «Storia» 0:00–1:00</td></tr>
-          <tr><td>05 · Primoverde</td><td>Spot Novelle · 70 anni · Cooperativa 4k · Fonni</td><td>0:07–0:10 · 1:30–1:33 · 0:54–0:56 · 2:15–2:17</td><td>Tutti dentro i tagli Primoverde</td></tr>
-          <tr><td>06 · Rossopregio</td><td>Cooperativa 4k · Fonni · Generico (verticale)</td><td>0:16–0:19 · 3:41–3:46 · 0:42–0:48</td><td>Tutti dentro i tagli Rossopregio</td></tr>
-          <tr><td>07 · Meridoro</td><td>70 anni · Fonni · Generico e Camion (verticali)</td><td>2:10–2:13 · 2:45–2:49 · 2:56–3:00 · 0:14–0:18 · 0:05–0:09</td><td>Tutti dentro i tagli Meridoro</td></tr>
-          <tr><td>09 · Insieme</td><td>70 anni Produttori Arborea</td><td>2:48–2:55</td><td><strong>Fuori elenco</strong>: la foto di gruppo davanti alla sede</td></tr>
+          <tr><td>01 · Come tutto è iniziato</td><td>70 anni Produttori Arborea (foto)</td><td>0:23 · 0:06 · 0:18 · 0:10 · 1:02</td><td>Dentro «Storia» 0:00–1:00</td></tr>
+          <tr><td>02 · La cooperativa oggi</td><td>Cooperativa 4k · 70 anni</td><td>0:36–0:39 · 1:10–1:12 · 2:35–2:38 · 2:11–2:14</td><td><strong>Fuori elenco</strong>: persone e assemblea</td></tr>
+          <tr><td>03 · Primoverde</td><td>Spot Novelle · Fonni · 70 anni · Cooperativa 4k</td><td>0:00–0:02 · 2:05–2:07 · 2:25–2:27 · 1:30–1:34 · 2:15 · 1:44 · 0:48–0:50 · 0:56–0:58</td><td>Quasi tutti dentro i tagli Primoverde; fragole e negozio fuori elenco</td></tr>
+          <tr><td>04 · Meridoro</td><td>Cooperativa 4k · Fonni · Spot Fiberfeed · 70 anni</td><td>0:21–0:23 · 0:30–0:32 · 2:57–2:59 · 0:08–0:10 · 0:06–0:08 · 2:21–2:23</td><td>Dentro i tagli Meridoro</td></tr>
+          <tr><td>05 · Rossopregio</td><td>Fonni · Cooperativa 4k</td><td>3:36–3:38 · 3:27–3:29 · 0:17–0:21 · 1:10–1:12</td><td>Dentro i tagli Rossopregio; macelleria e hamburger fuori elenco</td></tr>
+          <tr><td>06 · Le persone</td><td>Cooperativa 4k · 70 anni · Fonni</td><td>0:50–0:51 · 0:58–1:00 · 2:17 · 1:49–1:51 · 3:19–3:20</td><td><strong>Fuori elenco</strong></td></tr>
+          <tr><td>07 · Il finale</td><td>70 anni Produttori Arborea</td><td>2:48–2:54</td><td><strong>Fuori elenco</strong>: la squadra davanti alla sede</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="font-size:14px;color:var(--pa-ferro);margin-top:var(--pa-space-m)">I clip della pagina sono anteprime leggere (720p, senza audio). Il montaggio finale parte dai file originali in 4K. «Spot Fiberfeed» per ora non è usato: le riprese di pecore e mungitura raccontano bene Meridoro, ma la scena era già piena.</p>
+    <p style="font-size:14px;color:var(--pa-ferro);margin-top:var(--pa-space-m)">I clip della pagina sono anteprime leggere (720p, senza audio). Il montaggio finale parte dai file originali in 4K. Le riprese verticali (Generico, Camion) non sono usate: a tutto schermo in 16:9 andrebbero tagliate troppo.</p>
   </div>
 </section>
 
@@ -643,60 +551,19 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
   <div class="wrap">
     <h2>Punti da confermare</h2>
     <div class="cards">
-      <div class="card"><h3>La voce</h3><p>Proposta: una voce adulta calda e lenta che parla ai bambini. In alternativa la domanda della scena 1 la può fare un bambino vero, magari il figlio di un dipendente, e il resto lo racconta l'adulto. Renderebbe il video più autentico.</p></div>
-      <div class="card"><h3>Chi fondò la cooperativa</h3><p>Nel testo scriviamo «nel 1955 un gruppo di agricoltori e allevatori decise di unirsi». L'anno viene dal Company Profile («nata 71 anni fa») e dalla chiusura dello spot Fiberfeed («Dal 1955»). Va confermato chi erano i fondatori e se il registro del video è davvero quello dei primi soci.</p></div>
-      <div class="card"><h3>Il vecchio marchio sulle magliette</h3><p>Nelle riprese di «Cooperativa 4k» e «Fonni» i lavoratori indossano magliette con il vecchio marchio Arborea (la coccarda). Si vede poco e le persone restano vere, ma se la cooperativa preferisce evitarlo si cambiano i tagli.</p></div>
-      <div class="card"><h3>La foto di gruppo</h3><p>La chiusura usa il gruppo davanti alla sede (70 anni, 2:48–2:55), che non è nell'elenco frame. È l'inquadratura che dà più senso al finale. Se non si può usare, l'alternativa è la vista dal drone sulla piana di Arborea (70 anni 2:46).</p></div>
-      <div class="card"><h3>Illustrazioni</h3><p>Le figurine sono illustrazioni del design system. Se si vuole un tocco più «da bambini» (personaggi, un filo disegnato che accompagna la storia) si può disegnare una serie apposta, ma servono più giorni del 21 novembre: la propongo per un video successivo.</p></div>
-      <div class="card"><h3>Musica</h3><p>Tappeto acustico, leggero e luminoso (chitarra, glockenspiel), con un piccolo crescendo sulla scena 9 e chiusura sulla firma.</p></div>
+      <div class="card"><h3>I numeri</h3><p>Usiamo quelli del testo della cooperativa: 13 agricoltori fondatori, 300 soci, 180 dipendenti. Il Company Profile 2026 riporta 290 soci e 150 dipendenti: va confermato quali numeri valgono oggi.</p></div>
+      <div class="card"><h3>La voce</h3><p>Il testo è scritto con il «noi» della cooperativa e si rivolge ai bambini alla fine («E sapete una cosa?»). Proposta: una voce adulta calda e lenta, possibilmente di una persona della cooperativa.</p></div>
+      <div class="card"><h3>Il vecchio marchio</h3><p>In alcune riprese (magliette, sacchi, insegne) si vede ancora la vecchia coccarda Arborea. Si vede per pochi fotogrammi; se la cooperativa preferisce evitarla, quei tagli si cambiano.</p></div>
+      <div class="card"><h3>Riprese fuori elenco</h3><p>Per seguire il testo abbiamo usato anche inquadrature che non sono nell'elenco frame: la squadra davanti alla sede, l'assemblea, i laboratori, le fragole, la macelleria. Sono tutte nei video della cooperativa; va confermato che si possono usare.</p></div>
+      <div class="card"><h3>Le foto storiche</h3><p>Vengono dal video «70 anni». Per il montaggio finale servirebbero le scansioni originali (atto costitutivo, registro dei soci, foto dei campi e della sede), per avere più definizione nei movimenti di camera.</p></div>
+      <div class="card"><h3>Musica</h3><p>Tappeto acustico leggero, più raccolto sulle foto storiche, che si apre sul colore della scena 2 e cresce sul finale con la squadra.</p></div>
     </div>
   </div>
 </section>
 
-<footer><div class="wrap">Storyboard · Riprese dai video della cooperativa · Illustrazioni, marchi e grafica dal design system Produttori Arborea · Testi e voce in bozza, da approvare</div></footer>
+<footer><div class="wrap">Storyboard · Testo della cooperativa · Riprese e foto storiche dai video della cooperativa · Marchi e caratteri dal design system Produttori Arborea</div></footer>
 
 <script>
-// 12 punti vendita Meridoro (posizioni % sulla mappa del DS, dal video punti vendita)
-const HUBS = [[62.66,7.11],[27.68,23.92],[55.27,28.90],[29.79,31.29],[77.18,33.43],[25.43,40.06],[46.15,39.54],[64.88,48.79],[27.19,69.27],[27.92,79.34],[61.30,78.11]];
-const ARBOREA = [25.37,62.39];
-const map = document.getElementById('map');
-HUBS.forEach(([x,y],i) => {
-  const p = document.createElement('i'); p.className = 'pin a-in';
-  p.style.left = x+'%'; p.style.top = y+'%'; p.style.setProperty('--d', (3 + i*.22)+'s'); map.appendChild(p);
-});
-map.insertAdjacentHTML('beforeend',
-  `<i class="ring" style="left:${ARBOREA[0]}%;top:${ARBOREA[1]}%;--d:1.4s"></i>
-   <i class="pin home a-in" style="left:${ARBOREA[0]}%;top:${ARBOREA[1]}%;--d:1s"><span>Arborea</span></i>`);
-
-// Sc. 1: i passi lungo la strada (coordinate % sull'illustrazione 16:9, dal primo piano all'orizzonte)
-const ROAD = [[44.2,99.4],[46.8,95],[49.4,90.6],[51.9,87.1],[54,84.3],[55.8,81.5],[57.2,79],[58.6,77.1],[60.5,75.6],[62.6,74.3],[64.8,73],[67,71.9]];
-const road = document.getElementById('road');
-ROAD.forEach(([x,y],i) => {
-  const d = document.createElement('i'), s = 1.25 - i * .07;
-  d.style.cssText = `left:${x}%;top:${y}%;width:${s}cqw;height:${s}cqw;margin:${-s/2}cqw`;
-  d.style.setProperty('--d', (2.3 + i * .16) + 's');
-  road.appendChild(d);
-});
-
-// Sc. 4: semini che arrivano da direzioni diverse e si mettono in fila (2 righe × 8)
-const seeds = document.getElementById('seeds');
-for (let i = 0; i < 16; i++) {
-  const s = document.createElement('i'); s.className = 'seed';
-  const col = i % 8, row = Math.floor(i / 8);
-  s.style.left = (col * 12.5) + '%'; s.style.top = (row * 50) + '%';
-  const a = Math.random() * Math.PI * 2;
-  s.style.setProperty('--fx', (Math.cos(a) * 30) + 'cqw'); s.style.setProperty('--fy', (Math.sin(a) * 20) + 'cqw');
-  s.style.setProperty('--d', (2.2 + Math.random() * 1.2) + 's');
-  seeds.appendChild(s);
-}
-
-// Sc. 8: 29 semini verdi (soci) + 15 oro (dipendenti), ogni semino = 10 persone
-const dots = document.getElementById('dots');
-for (let i = 0; i < 44; i++) {
-  const d = document.createElement('i'); d.className = 'a-in' + (i >= 29 ? ' o' : '');
-  d.style.setProperty('--d', (i < 29 ? .5 + i * .075 : 3 + (i - 29) * .1) + 's'); dots.appendChild(d);
-}
-
 // riproduzione
 const frames = [...document.querySelectorAll('.frame')];
 const animToggle = document.getElementById('animToggle');
