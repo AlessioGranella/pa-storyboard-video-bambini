@@ -211,8 +211,8 @@ h1{font-family:var(--title);font-weight:500;font-size:clamp(34px,4.4vw,60px);lin
 .static.s3 .note{opacity:1}
 
 /* Sc. 4 — cooperativa = insieme */
-.s4 .illu{position:absolute;right:-2cqw;bottom:0;width:58cqw;aspect-ratio:1800/1008}
-.s4 .illu img{position:absolute;inset:0;width:100%;height:100%}
+.s4 .illu{position:absolute;right:0;bottom:0;width:62cqw;aspect-ratio:16/9;-webkit-mask-image:linear-gradient(to right,transparent,#000 16%),linear-gradient(to bottom,transparent,#000 10%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 16%),linear-gradient(to bottom,transparent,#000 10%);mask-composite:intersect}
+.s4 .illu video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 /* le persone: chi annuisce, chi indica il foglio, il respiro */
 .s4 .p{transform-origin:var(--o)}
 .play.s4 .p{animation:var(--k) var(--t) ease-in-out var(--l,0s) infinite alternate}
@@ -431,14 +431,7 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
       <article class="beat">
         <div class="frame s4 sabbia" tabindex="0" role="button" aria-label="Scena 4, rivedi animazione">
           <div class="stage">
-            <div class="illu ani e-draw" style="--d:.1s;--w:2.6s" aria-hidden="true">
-              <img src="assets/img/coop-sfondo.png" alt="">
-              <img class="p" style="--o:62.8% 100%;--k:breath;--t:3.4s" src="assets/img/coop-anziano.png" alt="">
-              <img class="p" style="--o:63.3% 47.6%;--k:look;--t:2.2s;--l:.6s" src="assets/img/coop-anziano-testa.png" alt="">
-              <img class="p" style="--o:69.4% 69.4%;--k:tap;--t:1.3s;--l:1s" src="assets/img/coop-foglio.png" alt="">
-              <img class="p" style="--o:38.9% 100%;--k:lean;--t:3.8s" src="assets/img/coop-giovane.png" alt="">
-              <img class="p" style="--o:49.4% 35.7%;--k:nod;--t:1.7s;--l:.3s" src="assets/img/coop-giovane-testa.png" alt="">
-            </div>
+            <div class="illu ani e-fade" style="--d:0s"><video class="clip" src="assets/clips/sc04-cooperare.mp4" poster="assets/clips/sc04-cooperare.jpg" muted playsinline preload="auto" aria-label="Animazione: due agricoltori guardano insieme la pannocchia e il foglio, sorridono"></video></div>
             <div class="tblock">
               <p class="word a-up" style="--d:.4s">Co<b>·</b>operare</p>
               <p class="hl a-up" style="--d:1.4s">vuol dire lavorare insieme.</p>
@@ -448,11 +441,11 @@ footer{padding:var(--pa-space-xl) 0 var(--pa-space-3xl);font-size:13px;color:var
           <span class="tc">Sc. 4 · 0:19 – 0:25</span><span class="replay">↻ Rivedi</span>
         </div>
         <div class="info">
-          <p class="idx">Scena 04 · Che cos'è una cooperativa <span class="chip f">Illustrazione animata</span></p>
+          <p class="idx">Scena 04 · Che cos'è una cooperativa <span class="chip f">Animazione AI</span></p>
           <dl>
             <div><dt>A schermo</dt><dd>«Co·operare» · «vuol dire lavorare insieme.»</dd></div>
             <div><dt>Voce</dt><dd class="vo">Cooperativa vuol dire proprio questo: lavorare insieme e aiutarsi a vicenda.</dd></div>
-            <div><dt>Regia</dt><dd>La parola viene spezzata per farla capire: «co» (insieme) e «operare» (lavorare). A destra l'illustrazione «cooperazione» del DS, scomposta in livelli perché le persone si muovano: il ragazzo annuisce e si sporge, l'agricoltore più anziano abbassa lo sguardo e batte il dito sul foglio che tengono insieme, entrambi respirano. In basso tanti semini arrivano da direzioni diverse e si mettono in fila: da soli erano sparsi, insieme fanno una forma.</dd></div>
+            <div><dt>Regia</dt><dd>La parola viene spezzata per farla capire: «co» (insieme) e «operare» (lavorare). A destra l'illustrazione «cooperazione» del DS diventa un vero cartone animato (generato con AI a partire dall'illustrazione, stesso tratto a incisione verde su sabbia): il ragazzo porge la pannocchia, l'agricoltore più anziano alza lo sguardo dal foglio, ride e la indica; la camera si avvicina piano. Il bordo sinistro sfuma nel fondo sabbia. In basso tanti semini arrivano da direzioni diverse e si mettono in fila: da soli erano sparsi, insieme fanno una forma.</dd></div>
           </dl>
         </div>
       </article>
